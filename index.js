@@ -1,4 +1,5 @@
 import express from 'express'
+import fs from 'fs'
 import path from 'path'
 
 const __dirname = path.resolve();
@@ -7,17 +8,31 @@ const app = express();
 
 // Подключаем шаблонизатор
 app.set('view engine', 'ejs');
-console.log(app.get('views'));
 
 // Делаем папку build статичной
 app.use(express.static(path.resolve(__dirname, 'build')));
 
 // Обрабатываем корневой запрос
 app.get('/', (req, res) => {
-    console.log(req.query);
-    res.render('index', {
-        slide: req.query.slide || 0,
-        theme: req.query.theme || 'dark'
+
+    // Считываем нужные параметры get запроса
+    let theme = req.query.theme || 'dark';
+    let slide = req.query.slide || 0;
+
+    // Читаем JSON
+    fs.readFile(path.join(__dirname, 'data', 'data.json'), 'utf-8', (err, content) => {
+        if (err) throw err;
+
+        // Парсим JSON и достаем нужный слайд
+        let jsonData = JSON.parse(content);
+        let dataStr = JSON.stringify(jsonData[slide].data);
+
+        // Рендерим ответ
+        res.render('index', {
+            theme: theme,
+            alias: jsonData[slide].alias,
+            data: dataStr
+        });
     });
 });
 
