@@ -42,9 +42,66 @@ a {
     text-decoration: none;
 }
 
+// CSS custom properties
+:root {
+    --white: #FCFBF7;
+    --grey-light: #BFBFBF;
+    --grey: #918F8A;
+    --yellow: #F4B000;
+    --black: #261C00;
+
+    --slide-background: radial-gradient(70.24% 70.24% at 49.87% 29.76%, rgba(19, 14, 0, 0.9) 0%, #000000 100%);
+    --slide-title-color: var(--white);
+    --slide-subtitle-color: var(--grey-light);
+}
+
+.theme_light {
+    --slide-background: #fff;
+    --slide-title-color: var(--black);
+    --slide-subtitle-color: var(--grey);
+}
+
 // Default font
 
 body {
     font-family: 'Roboto', serif;
     color: #000;
+}
+
+// Slide
+
+.slide {
+    height: 100vh;
+    padding: 20px 24px 0 24px;
+    background: var(--slide-background);
+
+    &__title {
+        font-weight: bold;
+        font-size: 30px;
+        line-height: 32px;
+        color: var(--slide-title-color);
+
+        @media screen and (orientation:landscape) {
+            text-align: center;
+        }
+    }
+
+    &__subtitle {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 18px;
+        color: var(--slide-subtitle-color);
+
+        margin-top: 8px;
+
+        @media screen and (orientation:landscape) {
+            text-align: center;
+        }
+    }
+}
+
+// Leaders
+
+.leaders {
+
 }
