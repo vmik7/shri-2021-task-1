@@ -1,4 +1,5 @@
 
+// Функция рендеринга слайдов
 window.renderTemplate = function(alias, data) {
 
     // Преобразуем html-кавычки в нормальные
