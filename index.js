@@ -14,8 +14,10 @@ app.use(express.static(path.resolve(__dirname, 'build')));
 
 // Обрабатываем корневой запрос
 app.get('/', (req, res) => {
+    console.log(req.query);
     res.render('index', {
-        message: 'This is current message...'
+        slide: req.query.slide || 0,
+        theme: req.query.theme || 'dark'
     });
 });
 
