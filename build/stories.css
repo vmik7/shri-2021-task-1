@@ -700,6 +700,12 @@ body {
 
 .user__avatar {
   position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.user__avatar img {
+  max-width: 100%;
 }
 
 .user__photo {
@@ -733,6 +739,34 @@ body {
   line-height: 16px;
   color: var(--subtitle-color);
   margin-top: 4px;
+}
+
+.user_view_inline {
+  max-width: 100%;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.user_view_inline .user__avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.user_view_inline .user__name {
+  margin-top: 0;
+}
+
+.user__info {
+  margin-left: 14px;
+  text-align: left;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .theme_light .leaders__user_bottom .user__value-text {
@@ -815,6 +849,122 @@ body {
   visibility: hidden;
 }
 
+.chart__content {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-top: 12px;
+}
+
+.chart__graph {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.chart__users {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 24px 0;
+}
+
+.chart__users-sep {
+  height: 2px;
+  background: var(--grey-light);
+  opacity: 0.3;
+  margin: 16px 0;
+}
+
+.graph__track {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.graph__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: 64px;
+}
+
+.graph__value {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 22px;
+  color: var(--subtitle-color);
+  margin-bottom: 8px;
+}
+
+.graph__item_active .graph__value {
+  color: var(--title-color);
+}
+
+.graph__column {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.graph__bar {
+  height: 70%;
+  width: 100%;
+  max-width: 40px;
+  border-radius: 6px;
+  background: var(--bar-background);
+  -webkit-box-shadow: var(--bar-shadow);
+          box-shadow: var(--bar-shadow);
+}
+
+.graph__item_active .graph__bar {
+  background: var(--bar-accent-background);
+  -webkit-box-shadow: var(--bar-accent-shadow);
+          box-shadow: var(--bar-accent-shadow);
+}
+
+.graph__label {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  color: var(--subtitle-color);
+  margin-top: 12px;
+}
+
 @media screen and (orientation: landscape) {
   .slide__title {
     text-align: center;
@@ -871,6 +1021,32 @@ body {
   .vote__content_orientation_portrait {
     display: none;
   }
+
+  .chart__content {
+    padding-top: 13px;
+  }
+
+  .chart__users {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+
+  .chart__user {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 220px;
+            flex: 0 1 220px;
+  }
+
+  .chart__users-sep {
+    height: 100%;
+    width: 2px;
+    margin: 0 16px;
+  }
 }
 
 @media screen and (orientation: portrait) {
@@ -880,5 +1056,18 @@ body {
 
   .vote__content_orientation_landscape {
     display: none;
+  }
+
+  .chart__graph {
+    margin-left: -24px;
+    margin-right: -12px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .graph__track {
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }
