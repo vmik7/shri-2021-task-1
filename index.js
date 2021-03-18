@@ -1,8 +1,7 @@
-import express from 'express'
-import fs from 'fs'
-import path from 'path'
+const express = require("express");
+const fs = require("fs");
+const path = require("path");
 
-const __dirname = path.resolve();
 const PORT = 8080;
 const app = express();
 
