@@ -82,6 +82,31 @@ a {
 
     --button-fill: var(--white);
     --button-fill-active: var(--grey);
+
+    --diagram-item-l1-fill: url(#grad-l1-dark);
+    --diagram-item-l2-fill: url(#grad-l2-dark);
+    --diagram-item-l3-fill: url(#grad-l3-dark);
+    --diagram-item-l4-fill: url(#grad-l4-dark);
+
+    --diagram-item-l1-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 163, 0, 0.8) 71.88%, rgba(91, 58, 0, 0.8) 100%);
+    --diagram-item-l2-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(99, 63, 0, 0.5) 72.92%, rgba(15, 9, 0, 0.5) 100%);;
+    --diagram-item-l3-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(155, 155, 155, 0.5) 71.88%, rgba(56, 41, 0, 0.5) 100%);
+    --diagram-item-l4-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(77, 77, 77, 0.5) 71.88%, rgba(56, 41, 0, 0.5) 100%);
+
+    --diagram-item-l1-shadow: 0px 0px 20px -8px rgba(248, 158, 0, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 162, 0, 0.9);
+    --diagram-item-l2-shadow: 0px 0px 20px -8px rgba(147, 93, 0, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(202, 129, 0, 0.9);
+    --diagram-item-l3-shadow: 0px 0px 20px -8px rgba(0, 0, 0, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(139, 139, 139, 0.9);
+    --diagram-item-l4-shadow: 0px 0px 20px -8px rgba(96, 96, 96, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(38, 38, 38, 0.9);
+
+    --diagram-dot-l1-background: radial-gradient(100% 100% at 50% 0%, rgba(255, 184, 0, 0.8) 0%, rgba(91, 66, 0, 0.8) 100%);
+    --diagram-dot-l2-background: radial-gradient(100% 100% at 50% 0%, rgba(165, 119, 0, 0.8) 0%, rgba(91, 66, 0, 0.8) 100%);
+    --diagram-dot-l3-background: radial-gradient(100% 100% at 50% 0%, rgba(151, 151, 151, 0.5) 0%, rgba(41, 41, 41, 0.5) 100%);
+    --diagram-dot-l4-background: radial-gradient(100% 100% at 50% 0%, rgba(62, 62, 62, 0.5) 0%, rgba(40, 40, 40, 0.5) 100%);
+
+    --diagram-dot-l1-shadow: 0px 0px 20px -8px rgba(247, 178, 1, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 12px rgba(255, 184, 0, 0.9);
+    --diagram-dot-l2-shadow: 0px 0px 20px -8px rgba(247, 178, 1, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5);
+    --diagram-dot-l3-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5);
+    --diagram-dot-l4-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 
@@ -108,6 +133,31 @@ a {
 
     --button-fill: var(--yellow);
     --button-fill-active: var(--grey-light);
+
+    --diagram-item-l1-fill: url(#grad-l1-light);
+    --diagram-item-l2-fill: url(#grad-l2-light);
+    --diagram-item-l3-fill: url(#grad-l3-light);
+    --diagram-item-l4-fill: url(#grad-l4-light);
+
+    --diagram-item-l1-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 184, 0, 0.56) 81.25%, rgba(255, 239, 153, 0.32) 100%);
+    --diagram-item-l2-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 184, 0, 0.24) 81.25%, rgba(255, 239, 153, 0.12) 100%);
+    --diagram-item-l3-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(166, 166, 166, 0.1725) 82.81%, rgba(203, 203, 203, 0.05) 92.19%);
+    --diagram-item-l4-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(191, 191, 191, 0.345) 82.81%, rgba(228, 228, 228, 0.1) 92.19%);
+
+    --diagram-item-l1-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.9);
+    --diagram-item-l2-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.4);
+    --diagram-item-l3-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(105, 105, 105, 0.2);
+    --diagram-item-l4-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(131, 131, 131, 0.6);
+
+    --diagram-dot-l1-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 184, 0, 0.56) 81.25%, rgba(255, 239, 153, 0.32) 100%);
+    --diagram-dot-l2-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 184, 0, 0.24) 81.25%, rgba(255, 239, 153, 0.12) 100%);
+    --diagram-dot-l3-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(166, 166, 166, 0.1725) 82.81%, rgba(203, 203, 203, 0.05) 92.19%);
+    --diagram-dot-l4-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(191, 191, 191, 0.345) 82.81%, rgba(228, 228, 228, 0.1) 92.19%);
+
+    --diagram-dot-l1-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.9);
+    --diagram-dot-l2-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.4);
+    --diagram-dot-l3-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(105, 105, 105, 0.2);
+    --diagram-dot-l4-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(131, 131, 131, 0.6);
 }
 
 
@@ -571,6 +621,167 @@ body {
         line-height: 18px;
         color: var(--subtitle-color);
         margin-top: 12px;
+    }
+}
+
+// Diagram block
+
+.diagram {
+
+    &__content {
+        height: 100%;
+        display: flex;
+        
+        @media screen and (orientation: portrait) {
+            flex-direction: column;
+        }
+
+        @media screen and (orientation: landscape) {
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    &__figure {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: relative;
+
+        @media screen and (orientation: portrait) {
+            flex: 1;
+        }
+    }
+
+    &__legend {
+    }
+
+    &__legend-line {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 16px 0;
+
+        position: relative;
+
+        &:not(:last-child) {
+            margin-bottom: 2px;
+            &::after {
+                content: '';
+                display: block;
+                height: 2px;
+                background: var(--grey);
+                opacity: 0.3;
+
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+        }
+    }
+
+    &__legend-dot {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+
+        &_l1 {
+            background: var(--diagram-dot-l1-background);
+            box-shadow: var(--diagram-dot-l1-shadow);
+        }
+
+        &_l2 {
+            background: var(--diagram-dot-l2-background);
+            box-shadow: var(--diagram-dot-l2-shadow);
+        }
+
+        &_l3 {
+            background: var(--diagram-dot-l3-background);
+            box-shadow: var(--diagram-dot-l3-shadow);
+        }
+
+        &_l4 {
+            background: var(--diagram-dot-l4-background);
+            box-shadow: var(--diagram-dot-l4-shadow);
+        }
+    }
+
+    &__legend-title {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 18px;
+        color: var(--title-color);
+        margin-left: 10px;
+        margin-right: auto;
+    }
+
+    &__legend-diff {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 18px;
+        color: var(--subtitle-color);
+        margin-right: 16px;
+    }
+
+    &__legend-value {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 18px;
+        color: var(--subtitle-color);
+    }
+
+    &__center-block {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        width: 150px;
+        height: 150px;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &__text-total {
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 32px;
+        text-align: center;
+        color: var(--title-color);
+    }
+
+    &__text-diff {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 22px;
+        text-align: center;
+        color: var(--subtitle-color);
+        margin-top: 8px;
+    }
+}
+
+.pie-chart {
+
+    &__segment {
+
+        &_l1 {
+            stroke: var(--diagram-item-l1-fill);
+        }
+
+        &_l2 {
+            stroke: var(--diagram-item-l2-fill);
+        }
+
+        &_l3 {
+            stroke: var(--diagram-item-l3-fill);
+        }
+
+        &_l4 {
+            stroke: var(--diagram-item-l4-fill);
+        }
     }
 }
 
