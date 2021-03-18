@@ -332,7 +332,108 @@ window.renderTemplate = function(alias, data) {
         `;
     }
     else if (alias === 'diagram') {
-        html = 'Круговая диаграмма, алиас шаблона diagram';
+
+        // Выделяем числовую часть valueText и differenceText в отдельные массивы
+        let values = [], diffs = [];
+        for (let i = 0; i < 4; i++) {
+            values[i] = slideData.categories[i].valueText.match(/[+-]?[0-9]+/g);
+            diffs[i] = slideData.categories[i].differenceText.match(/[+-]?[0-9]+/g);
+        }
+
+        // Cчитаем проценты для диаграммы
+        let sum = +values[0] + +values[1] + +values[2] + +values[3];
+
+        let percents = [];
+        for (let i = 0; i < 3; i++) {
+            percents[i] = Math.floor(values[i] * 1000 / sum);
+        }
+        percents[3] = 1000 - percents[0] - percents[1] - percents[2];
+
+        // Считаем сдвиги секторов для диаграммы
+        let offsets = [];
+        offsets[0] = 250;
+        offsets[1] = 1000 + 250 - percents[0];
+        offsets[2] = offsets[1] - percents[1];
+        offsets[3] = offsets[2] - percents[2];
+
+        html = `
+            <div class="slide diagram">
+                <h1 class="slide__title">${ slideData.title }</h1>
+                <p class="slide__subtitle">${ slideData.subtitle }</p>
+                <div class="slide__content diagram__content">
+                    <div class="diagram__figure">
+                        <svg width="100%" height="100%" viewBox="-200 -200 400 400" class="diagram__pie-chart pie-chart">
+                            <radialGradient id="grad-l1-dark" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
+                                <stop offset="0.71875" stop-color="#FFA300"/>
+                                <stop offset="1" stop-color="#5B3A00"/>
+                            </radialGradient>
+                            <radialGradient id="grad-l2-dark" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
+                                <stop offset="0.729167" stop-color="#633F00"/>
+                                <stop offset="1" stop-color="#0F0900"/>
+                            </radialGradient>
+                            <radialGradient id="grad-l3-dark" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
+                                <stop offset="0.71875" stop-color="#9B9B9B"/>
+                                <stop offset="1" stop-color="#382900"/>
+                            </radialGradient>
+                            <radialGradient id="grad-l4-dark" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
+                                <stop offset="0.71875" stop-color="#4D4D4D"/>
+                                <stop offset="1" stop-color="#382900"/>
+                            </radialGradient>
+                            <radialGradient id="grad-l1-light" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
+                                <stop offset="0.8125" stop-color="#FFB800" stop-opacity="0.7"/>
+                                <stop offset="1" stop-color="#FFEF99" stop-opacity="0.4"/>
+                            </radialGradient>
+                            <radialGradient id="grad-l2-light" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
+                                <stop offset="0.8125" stop-color="#FFB800" stop-opacity="0.4"/>
+                                <stop offset="1" stop-color="#FFEF99" stop-opacity="0.2"/>  
+                            </radialGradient>
+                            <radialGradient id="grad-l3-light" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
+                                <stop offset="0.828125" stop-color="#A6A6A6" stop-opacity="0.69"/>
+                                <stop offset="0.921875" stop-color="#CBCBCB" stop-opacity="0.2"/>
+                            </radialGradient>
+                            <radialGradient id="grad-l4-light" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
+                                <stop offset="0.828125" stop-color="#BFBFBF" stop-opacity="0.69"/>
+                                <stop offset="0.921875" stop-color="#E4E4E4" stop-opacity="0.2"/>
+                            </radialGradient>
+                            <circle class="pie-chart__segment pie-chart__segment_l1" cx="0" cy="0" r="159.1549430918954" fill="transparent" stroke-width="60" stroke-dasharray="${ percents[0] - 5 } ${ 1005 - percents[0] }" stroke-dashoffset="${ offsets[0] }"></circle>
+                            <circle class="pie-chart__segment pie-chart__segment_l2" cx="0" cy="0" r="159.1549430918954" fill="transparent" stroke-width="60" stroke-dasharray="${ percents[1] - 5 } ${ 1005 - percents[1] }" stroke-dashoffset="${ offsets[1] }"></circle>
+                            <circle class="pie-chart__segment pie-chart__segment_l3" cx="0" cy="0" r="159.1549430918954" fill="transparent" stroke-width="60" stroke-dasharray="${ percents[2] - 5 } ${ 1005 - percents[2] }" stroke-dashoffset="${ offsets[2] }"></circle>
+                            <circle class="pie-chart__segment pie-chart__segment_l4" cx="0" cy="0" r="159.1549430918954" fill="transparent" stroke-width="60" stroke-dasharray="${ percents[3] - 5 } ${ 1005 - percents[3] }" stroke-dashoffset="${ offsets[3] }"></circle>
+                        </svg>
+                        <div class="diagram__center-block">
+                            <div class="diagram__text-total">${ slideData.totalText }</div>
+                            <div class="diagram__text-diff">${ slideData.differenceText }</div>
+                        </div>
+                    </div>
+                    <div class="diagram__legend">
+                        <div class="diagram__legend-line">
+                            <div class="diagram__legend-dot diagram__legend-dot_l1"></div>
+                            <div class="diagram__legend-title">${ slideData.categories[0].title }</div>
+                            <div class="diagram__legend-diff">${ diffs[0] }</div>
+                            <div class="diagram__legend-value">${ values[0] }</div>
+                        </div>
+                        <div class="diagram__legend-line">
+                            <div class="diagram__legend-dot diagram__legend-dot_l2"></div>
+                            <div class="diagram__legend-title">${ slideData.categories[1].title }</div>
+                            <div class="diagram__legend-diff">${ diffs[1] }</div>
+                            <div class="diagram__legend-value">${ values[1] }</div>
+                        </div>
+                        <div class="diagram__legend-line">
+                            <div class="diagram__legend-dot diagram__legend-dot_l3"></div>
+                            <div class="diagram__legend-title">${ slideData.categories[2].title }</div>
+                            <div class="diagram__legend-diff">${ diffs[2] }</div>
+                            <div class="diagram__legend-value">${ values[2] }</div>
+                        </div>
+                        <div class="diagram__legend-line">
+                            <div class="diagram__legend-dot diagram__legend-dot_l4"></div>
+                            <div class="diagram__legend-title">${ slideData.categories[3].title }</div>
+                            <div class="diagram__legend-diff">${ diffs[3] }</div>
+                            <div class="diagram__legend-value">${ values[3] }</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
     }
     else if (alias === 'activity') {
         html = 'Карта активности, алиас шаблона activity';
