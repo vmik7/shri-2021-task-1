@@ -256,7 +256,80 @@ window.renderTemplate = function(alias, data) {
         `;
     }
     else if (alias === 'chart') {
-        html = 'Статистика, алиас шаблона chart';
+
+        let activeIndex = 0;
+        for (let i = 0; i < slideData.values.length; i++) {
+            if (slideData.values[i].active) {
+                activeIndex = i;
+                break;
+            }
+        }
+        let indexR = Math.min(activeIndex + 2, slideData.values.length - 1);
+        let indexL = Math.max(indexR - 9 + 1, 0);
+        let maxValue = slideData.values[indexR].value;
+        for (let i = indexL; i < indexR; i++) {
+            maxValue = Math.max(maxValue, slideData.values[i].value);
+        }
+
+        let readyItemsHtml = ``;
+        for (let i = indexL; i <= indexR; i++) {
+            readyItemsHtml += `
+                <div class="graph__item${ slideData.values[i].active ? ' graph__item_active' : '' }">
+                    <div class="graph__column">
+                        <div class="graph__value">${ i <= activeIndex ? slideData.values[i].value : '' }</div>
+                        <div class="graph__bar" style="height: calc(70% * ${ slideData.values[i].value } / ${ maxValue });"></div>
+                    </div>
+                    <div class="graph__label">${ slideData.values[i].title }</div>
+                </div>
+            `;
+        }
+
+        html = `
+            <div class="slide chart">
+                <h1 class="slide__title">${ slideData.title }</h1>
+                <p class="slide__subtitle">${ slideData.subtitle }</p>
+                <div class="slide__content chart__content">
+                    <div class="chart__graph graph">
+                        <div class="graph__track">
+                        `
+                        + readyItemsHtml + 
+                        `
+                        </div>
+                    </div>
+                    <div class="chart__users">
+                        <div class="user user_view_inline chart__user">
+                            <div class="user__avatar">
+                                <picture>
+                                    <img	src="assets/images/1x/${ slideData.users[0].avatar }"
+                                            srcset="assets/images/2x/${ slideData.users[0].avatar } 2x"
+                                            class="user__photo"
+                                            alt="avatar">
+                                </picture>
+                            </div>
+                            <div class="user__info">
+                                <div class="user__name">${ slideData.users[0].name }</div>
+                                <div class="user__value-text">${ slideData.users[0].valueText }</div>
+                            </div>
+                        </div>
+                        <div class="chart__users-sep"></div>
+                        <div class="user user_view_inline chart__user">
+                            <div class="user__avatar">
+                                <picture>
+                                    <img	src="assets/images/1x/${ slideData.users[1].avatar }"
+                                            srcset="assets/images/2x/${ slideData.users[1].avatar } 2x"
+                                            class="user__photo"
+                                            alt="avatar">
+                                </picture>
+                            </div>
+                            <div class="user__info">
+                                <div class="user__name">${ slideData.users[1].name }</div>
+                                <div class="user__value-text">${ slideData.users[1].valueText }</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
     }
     else if (alias === 'diagram') {
         html = 'Круговая диаграмма, алиас шаблона diagram';
