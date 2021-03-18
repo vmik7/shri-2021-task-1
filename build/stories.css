@@ -942,7 +942,7 @@ body {
 }
 
 .graph__bar {
-  height: 70%;
+  min-height: 8px;
   width: 100%;
   max-width: 40px;
   border-radius: 6px;
