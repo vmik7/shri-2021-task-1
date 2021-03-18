@@ -635,11 +635,15 @@ body {
         
         @media screen and (orientation: portrait) {
             flex-direction: column;
+            padding-bottom: 8px;
+            padding-top: 14px;
         }
 
         @media screen and (orientation: landscape) {
             align-items: center;
             justify-content: center;
+            padding-left: 18px;
+            padding-right: 18px;
         }
     }
 
@@ -653,9 +657,16 @@ body {
         @media screen and (orientation: portrait) {
             flex: 1;
         }
+        @media screen and (orientation: landscape) {
+            flex: 0 1 240px;
+        }
     }
 
     &__legend {
+        @media screen and (orientation: landscape) {
+            flex: 1;
+            margin-left: 40px;
+        }
     }
 
     &__legend-line {
@@ -678,7 +689,7 @@ body {
                 position: absolute;
                 left: 0;
                 right: 0;
-                bottom: 0;
+                bottom: -2px;
             }
         }
     }
@@ -738,9 +749,8 @@ body {
         left: 50%;
         top: 50%;
         transform: translate3d(-50%, -50%, 0);
-        width: 150px;
-        height: 150px;
-        
+        width: 50%;
+        height: 50%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -752,6 +762,11 @@ body {
         line-height: 32px;
         text-align: center;
         color: var(--title-color);
+
+        @media screen and (orientation: landscape) {
+            font-size: 20px;
+            line-height: 22px;
+        }
     }
 
     &__text-diff {
@@ -761,6 +776,11 @@ body {
         text-align: center;
         color: var(--subtitle-color);
         margin-top: 8px;
+
+        @media screen and (orientation: landscape) {
+            font-size: 16px;
+            line-height: 18px;
+        }
     }
 }
 

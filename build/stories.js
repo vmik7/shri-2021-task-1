@@ -351,10 +351,11 @@ window.renderTemplate = function(alias, data) {
 
         // Считаем сдвиги секторов для диаграммы
         let offsets = [];
-        offsets[0] = 250;
-        offsets[1] = 1000 + 250 - percents[0];
+        offsets[0] = 250 + 80;
+        offsets[1] = 1000 + 250 + 80 - percents[0];
         offsets[2] = offsets[1] - percents[1];
         offsets[3] = offsets[2] - percents[2];
+        
 
         html = `
             <div class="slide diagram">
@@ -362,7 +363,7 @@ window.renderTemplate = function(alias, data) {
                 <p class="slide__subtitle">${ slideData.subtitle }</p>
                 <div class="slide__content diagram__content">
                     <div class="diagram__figure">
-                        <svg width="100%" height="100%" viewBox="-200 -200 400 400" class="diagram__pie-chart pie-chart">
+                        <svg width="100%" height="100%" viewBox="-190 -190 380 380" class="diagram__pie-chart pie-chart">
                             <radialGradient id="grad-l1-dark" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
                                 <stop offset="0.71875" stop-color="#FFA300"/>
                                 <stop offset="1" stop-color="#5B3A00"/>
