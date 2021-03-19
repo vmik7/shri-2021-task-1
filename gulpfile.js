@@ -1,12 +1,8 @@
 let projectFolder = 'build';
 let sourceFolder = 'src';
 
-// let fs = require('fs');
-// var path = require('path');
-
 let mypath = {
     build: {
-        html: projectFolder + '/',
         css: projectFolder + '/',
     },
     src: {
@@ -29,14 +25,6 @@ let scss = require('gulp-sass');
 let autoprefixer = require('gulp-autoprefixer');
 let groupMedia = require('gulp-group-css-media-queries');
 
-// let cleanCss = require('gulp-clean-css');
-// let rename = require('gulp-rename');
-
-// let svgSprite = require('gulp-svg-sprite');
-// var svgstore = require('gulp-svgstore');
-// var svgmin = require('gulp-svgmin');
-
-
 function browserSyncFunction() {
     browserSync.init({
         server: {
@@ -50,7 +38,6 @@ function browserSyncFunction() {
 
 function html() {
     return src(mypath.src.html)
-        .pipe(dest(mypath.build.html))
         .pipe(browserSync.stream());
 }
 
@@ -72,37 +59,6 @@ function js() {
     return src(mypath.watch.js)
         .pipe(browserSync.stream());
 }
-
-// gulp.task('svgSprite', function() {
-//     return gulp.src([projectFolder + '/assets/images/map-columns-optimized/*.svg'])
-//     .pipe(svgSprite({
-//         mode: {
-//             stack: {
-//                 sprite: '../icons/icons.svg', // sprite file name
-//                 example: true
-//             }
-//         }
-//     }))
-//     .pipe(dest(projectFolder + '/assets/images/'));
-// });
-
-// gulp.task('svgstore', function () {
-//     return gulp
-//         .src([projectFolder + '/assets/images/map-columns/*.svg'])
-//         .pipe(svgmin(function (file) {
-//             var prefix = path.basename(file.relative, path.extname(file.relative));
-//             return {
-//                 plugins: [{
-//                     cleanupIDs: {
-//                         prefix: prefix + '-',
-//                         minify: true
-//                     }
-//                 }]
-//             }
-//         }))
-//         .pipe(svgstore())
-//         .pipe(gulp.dest(projectFolder + '/assets/images/'));
-// });
 
 function watchFiles() {
     gulp.watch([mypath.watch.html], html);

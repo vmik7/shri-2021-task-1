@@ -37,5 +37,5 @@ app.get('/', (req, res) => {
 
 // Слушаем порт
 app.listen(PORT, () => {
-    console.log(`Server has been started... port: ${PORT}`);
+    // console.log(`Server has been started... port: ${PORT}`);
 });
