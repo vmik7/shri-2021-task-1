@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 
     // Считываем нужные параметры get запроса
     let theme = req.query.theme || 'dark';
-    let slide = req.query.slide || 0;
+    let slide = (req.query.slide || 1) - 1;
 
     // Читаем JSON
     fs.readFile(path.join(__dirname, 'data', 'data.json'), 'utf-8', (err, content) => {
@@ -37,5 +37,5 @@ app.get('/', (req, res) => {
 
 // Слушаем порт
 app.listen(PORT, () => {
-    // console.log(`Server has been started... port: ${PORT}`);
+    console.log(`Server has been started... port: ${PORT}`);
 });
