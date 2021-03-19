@@ -88,25 +88,42 @@ a {
     --diagram-item-l3-fill: url(#grad-l3-dark);
     --diagram-item-l4-fill: url(#grad-l4-dark);
 
-    --diagram-item-l1-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 163, 0, 0.8) 71.88%, rgba(91, 58, 0, 0.8) 100%);
-    --diagram-item-l2-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(99, 63, 0, 0.5) 72.92%, rgba(15, 9, 0, 0.5) 100%);;
-    --diagram-item-l3-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(155, 155, 155, 0.5) 71.88%, rgba(56, 41, 0, 0.5) 100%);
-    --diagram-item-l4-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(77, 77, 77, 0.5) 71.88%, rgba(56, 41, 0, 0.5) 100%);
+    // --diagram-item-l1-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 163, 0, 0.8) 71.88%, rgba(91, 58, 0, 0.8) 100%);
+    // --diagram-item-l2-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(99, 63, 0, 0.5) 72.92%, rgba(15, 9, 0, 0.5) 100%);;
+    // --diagram-item-l3-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(155, 155, 155, 0.5) 71.88%, rgba(56, 41, 0, 0.5) 100%);
+    // --diagram-item-l4-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(77, 77, 77, 0.5) 71.88%, rgba(56, 41, 0, 0.5) 100%);
 
-    --diagram-item-l1-shadow: 0px 0px 20px -8px rgba(248, 158, 0, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 162, 0, 0.9);
-    --diagram-item-l2-shadow: 0px 0px 20px -8px rgba(147, 93, 0, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(202, 129, 0, 0.9);
-    --diagram-item-l3-shadow: 0px 0px 20px -8px rgba(0, 0, 0, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(139, 139, 139, 0.9);
-    --diagram-item-l4-shadow: 0px 0px 20px -8px rgba(96, 96, 96, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(38, 38, 38, 0.9);
+    // --diagram-item-l1-shadow: 0px 0px 20px -8px rgba(248, 158, 0, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 162, 0, 0.9);
+    // --diagram-item-l2-shadow: 0px 0px 20px -8px rgba(147, 93, 0, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(202, 129, 0, 0.9);
+    // --diagram-item-l3-shadow: 0px 0px 20px -8px rgba(0, 0, 0, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(139, 139, 139, 0.9);
+    // --diagram-item-l4-shadow: 0px 0px 20px -8px rgba(96, 96, 96, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(38, 38, 38, 0.9);
 
-    --diagram-dot-l1-background: radial-gradient(100% 100% at 50% 0%, rgba(255, 184, 0, 0.8) 0%, rgba(91, 66, 0, 0.8) 100%);
-    --diagram-dot-l2-background: radial-gradient(100% 100% at 50% 0%, rgba(165, 119, 0, 0.8) 0%, rgba(91, 66, 0, 0.8) 100%);
-    --diagram-dot-l3-background: radial-gradient(100% 100% at 50% 0%, rgba(151, 151, 151, 0.5) 0%, rgba(41, 41, 41, 0.5) 100%);
-    --diagram-dot-l4-background: radial-gradient(100% 100% at 50% 0%, rgba(62, 62, 62, 0.5) 0%, rgba(40, 40, 40, 0.5) 100%);
+    // --diagram-dot-l1-background: radial-gradient(100% 100% at 50% 0%, rgba(255, 184, 0, 0.8) 0%, rgba(91, 66, 0, 0.8) 100%);
+    // --diagram-dot-l2-background: radial-gradient(100% 100% at 50% 0%, rgba(165, 119, 0, 0.8) 0%, rgba(91, 66, 0, 0.8) 100%);
+    // --diagram-dot-l3-background: radial-gradient(100% 100% at 50% 0%, rgba(151, 151, 151, 0.5) 0%, rgba(41, 41, 41, 0.5) 100%);
+    // --diagram-dot-l4-background: radial-gradient(100% 100% at 50% 0%, rgba(62, 62, 62, 0.5) 0%, rgba(40, 40, 40, 0.5) 100%);
 
-    --diagram-dot-l1-shadow: 0px 0px 20px -8px rgba(247, 178, 1, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 12px rgba(255, 184, 0, 0.9);
-    --diagram-dot-l2-shadow: 0px 0px 20px -8px rgba(247, 178, 1, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5);
-    --diagram-dot-l3-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5);
-    --diagram-dot-l4-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5);
+    // --diagram-dot-l1-shadow: 0px 0px 20px -8px rgba(247, 178, 1, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 12px rgba(255, 184, 0, 0.9);
+    // --diagram-dot-l2-shadow: 0px 0px 20px -8px rgba(247, 178, 1, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5);
+    // --diagram-dot-l3-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5);
+    // --diagram-dot-l4-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5);
+
+    --map-legend-seg-background: radial-gradient(51.52% 129.57% at 48.48% 50%, rgba(64, 59, 54, 0) 0%, rgba(19, 18, 17, 0.5) 100%);
+    --map-legend-seg-shadow: inset 0px -1px 2px rgba(255, 255, 255, 0.25), inset 3px 1px 16px rgba(112, 102, 94, 0.3);
+
+    --map-legend-side-background: radial-gradient(150% 252.96% at 150% 50%, rgba(64, 59, 54, 0.65) 0%, rgba(0, 0, 0, 0.65) 100%);
+    --map-legend-side-shadow: inset 0px -1px 2px rgba(255, 255, 255, 0.25), inset 3px 1px 16px rgba(112, 102, 94, 0.3);
+
+    --map-legend-min-background: radial-gradient(3906.1% 3815.36% at 89.06% 78.28%, rgba(19, 17, 16, 0.65) 0%, rgba(0, 0, 0, 0.65) 100%);
+    --map-legend-mid-background: radial-gradient(5752.25% 5190.32% at 74.43% 60.32%, rgba(0, 0, 0, 0.9) 0%, rgba(35, 22, 0, 0.9) 0.01%, rgba(112, 92, 94, 0.9) 100%);
+    --map-legend-max-background: radial-gradient(5528.36% 3005.63% at 74.43% 75.84%, rgba(0, 0, 0, 0.9) 0%, rgba(33, 22, 2, 0.9) 0.01%, rgba(172, 113, 9, 0.9) 100%);
+    --map-legend-extra-background: radial-gradient(2258.03% 620.37% at 83.33% 88.95%, #201502 0%, #C7830A 100%);
+
+    --map-legend-min-shadow: inset -1px 0px 2px rgba(255, 255, 255, 0.2), inset 1px 1px 16px rgba(112, 102, 94, 0.2);
+    --map-legend-mid-shadow: inset -1px 0px 1px rgba(255, 255, 255, 0.2), inset 2px 2px 10px rgba(93, 116, 141, 0.6);
+    --map-legend-max-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.2), inset 2px 2px 10px rgba(242, 159, 13, 0.2);
+    --map-legend-extra-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.2), inset 2px 2px 10px rgba(242, 159, 13, 0.9);
+
 }
 
 
@@ -139,25 +156,41 @@ a {
     --diagram-item-l3-fill: url(#grad-l3-light);
     --diagram-item-l4-fill: url(#grad-l4-light);
 
-    --diagram-item-l1-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 184, 0, 0.56) 81.25%, rgba(255, 239, 153, 0.32) 100%);
-    --diagram-item-l2-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 184, 0, 0.24) 81.25%, rgba(255, 239, 153, 0.12) 100%);
-    --diagram-item-l3-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(166, 166, 166, 0.1725) 82.81%, rgba(203, 203, 203, 0.05) 92.19%);
-    --diagram-item-l4-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(191, 191, 191, 0.345) 82.81%, rgba(228, 228, 228, 0.1) 92.19%);
+    // --diagram-item-l1-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 184, 0, 0.56) 81.25%, rgba(255, 239, 153, 0.32) 100%);
+    // --diagram-item-l2-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 184, 0, 0.24) 81.25%, rgba(255, 239, 153, 0.12) 100%);
+    // --diagram-item-l3-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(166, 166, 166, 0.1725) 82.81%, rgba(203, 203, 203, 0.05) 92.19%);
+    // --diagram-item-l4-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(191, 191, 191, 0.345) 82.81%, rgba(228, 228, 228, 0.1) 92.19%);
 
-    --diagram-item-l1-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.9);
-    --diagram-item-l2-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.4);
-    --diagram-item-l3-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(105, 105, 105, 0.2);
-    --diagram-item-l4-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(131, 131, 131, 0.6);
+    // --diagram-item-l1-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.9);
+    // --diagram-item-l2-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.4);
+    // --diagram-item-l3-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(105, 105, 105, 0.2);
+    // --diagram-item-l4-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(131, 131, 131, 0.6);
 
-    --diagram-dot-l1-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 184, 0, 0.56) 81.25%, rgba(255, 239, 153, 0.32) 100%);
-    --diagram-dot-l2-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 184, 0, 0.24) 81.25%, rgba(255, 239, 153, 0.12) 100%);
-    --diagram-dot-l3-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(166, 166, 166, 0.1725) 82.81%, rgba(203, 203, 203, 0.05) 92.19%);
-    --diagram-dot-l4-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(191, 191, 191, 0.345) 82.81%, rgba(228, 228, 228, 0.1) 92.19%);
+    // --diagram-dot-l1-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 184, 0, 0.56) 81.25%, rgba(255, 239, 153, 0.32) 100%);
+    // --diagram-dot-l2-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 184, 0, 0.24) 81.25%, rgba(255, 239, 153, 0.12) 100%);
+    // --diagram-dot-l3-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(166, 166, 166, 0.1725) 82.81%, rgba(203, 203, 203, 0.05) 92.19%);
+    // --diagram-dot-l4-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(191, 191, 191, 0.345) 82.81%, rgba(228, 228, 228, 0.1) 92.19%);
 
-    --diagram-dot-l1-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.9);
-    --diagram-dot-l2-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.4);
-    --diagram-dot-l3-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(105, 105, 105, 0.2);
-    --diagram-dot-l4-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(131, 131, 131, 0.6);
+    // --diagram-dot-l1-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.9);
+    // --diagram-dot-l2-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.4);
+    // --diagram-dot-l3-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(105, 105, 105, 0.2);
+    // --diagram-dot-l4-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(131, 131, 131, 0.6);
+
+    --map-legend-seg-background: radial-gradient(2408.25% 2730.55% at 89.06% 78.28%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.8) 100%);
+    --map-legend-seg-shadow: inset -1px 0px 2px rgba(255, 255, 255, 0.2), inset 1px 1px 16px rgba(103, 103, 103, 0.2);
+
+    --map-legend-side-background: radial-gradient(2408.25% 2730.55% at 89.06% 78.28%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.8) 100%);
+    --map-legend-side-shadow: inset -1px 0px 2px rgba(255, 255, 255, 0.2), inset 1px 1px 16px rgba(103, 103, 103, 0.2);
+
+    --map-legend-min-background: radial-gradient(2408.25% 2730.55% at 89.06% 78.28%, rgba(250, 250, 250, 0.6) 0%, rgba(250, 250, 250, 0.6) 100%);
+    --map-legend-mid-background: radial-gradient(2408.25% 2730.55% at 89.06% 78.28%, rgba(250, 250, 250, 0.8) 0%, rgba(250, 250, 250, 0.8) 100%);
+    --map-legend-max-background: radial-gradient(68.1% 68.1% at 4.41% 31.9%, #FFF6DD 8.72%, #FFFEFA 100%);
+    --map-legend-extra-background: radial-gradient(66.02% 86.49% at -16.18% 13.51%, rgba(255, 186, 6, 0.85) 0%, #FFF2AD 100%);
+
+    --map-legend-min-shadow: inset -1px 0px 2px rgba(250, 250, 250, 0.2), inset 1px 1px 16px rgba(106, 106, 106, 0.2);
+    --map-legend-mid-shadow: inset -1px 0px 2px rgba(250, 250, 250, 0.2), inset 1px 1px 16px rgba(106, 106, 106, 0.3);
+    --map-legend-max-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.4);
+    --map-legend-extra-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.4);
 }
 
 
@@ -806,8 +839,182 @@ body {
     }
 }
 
+// Activity block
 
-// :focus {
-//     outline: 3px solid blueviolet;
-//     outline-offset: 2px;
-// }
+.activity {
+
+    &__content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        @media screen and (orientation: portrait) {
+            padding-bottom: 24px;
+        }
+        @media screen and (orientation: landscape) {
+            justify-content: center;
+        }
+    }
+
+    &__figure {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media screen and (orientation: portrait) {
+            flex: 1;
+        }
+    }
+
+    &__legend {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__legend-item {
+        width: 60px;
+
+        &:not(:last-child) {
+            margin-right: 8px;
+        }
+    }
+
+    &__legend-segment {
+        width: 52px;
+        height: 4px;
+        background: var(--map-legend-seg-background);
+        box-shadow: var(--map-legend-seg-shadow);
+
+        position: absolute;
+        top: 4px;
+        left: 4px;
+    }
+
+    &__legend-tile {
+        height: 12px;
+    }
+
+    &__legend-item:nth-child(1) &__legend-tile {
+        position: relative;
+
+        &::before, &::after {
+            content: '';
+            display: block;
+            height: 12px;
+            width: 4px;
+            border-radius: 2px;
+            background: var(--map-legend-side-background);
+            box-shadow: var(--map-legend-side-shadow);
+
+            position: absolute;
+            top: 0;
+        }
+        &::before {
+            left: 0;
+        }
+        &::after {
+            right: 0;
+        }
+    }
+    &__legend-item:nth-child(2) &__legend-tile {
+        border-radius: 2px;
+        background: var(--map-legend-min-background);
+        box-shadow: var(--map-legend-min-shadow);
+    }
+    &__legend-item:nth-child(3) &__legend-tile {
+        border-radius: 2px;
+        background: var(--map-legend-mid-background);
+        box-shadow: var(--map-legend-mid-shadow);
+    }
+    &__legend-item:nth-child(4) &__legend-tile {
+        border-radius: 2px;
+        background: var(--map-legend-max-background);
+        box-shadow: var(--map-legend-max-shadow);
+    }
+    &__legend-item:nth-child(5) &__legend-tile {
+        border-radius: 2px;
+        background: var(--map-legend-extra-background);
+        box-shadow: var(--map-legend-extra-shadow);
+    }
+
+    &__legend-label {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 18px;
+        color: var(--subtitle-color);
+        margin-top: 8px;
+
+        @media screen and (orientation: landscape) {
+            text-align: center;
+        }
+
+        &_portrait {
+            @media screen and (orientation: landscape) {
+                display: none;
+            }
+        }
+
+        &_landscape {
+            @media screen and (orientation: portrait) {
+                display: none;
+            }
+        }
+    }
+}
+
+// Map block
+
+.map {
+
+    &__orientation {
+
+        &_portrait {
+            @media screen and (orientation: landscape) {
+                display: none;
+            }
+        }
+
+        &_landscape {
+            @media screen and (orientation: portrait) {
+                display: none;
+            }
+        }
+    }
+    &__row {
+        display: flex;
+        margin-top: -21px;
+
+        &:nth-child(2n + 1) {
+            margin-right: 17px;
+        }
+        &:nth-child(2n + 2) {
+            margin-left: 17px;
+        }
+    }
+
+    &__col {
+        width: 34px;
+        height: 34px;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        &_min {
+
+        }
+
+        &_mid {
+        }
+
+        &_max {
+        }
+
+        &_extra {
+        }
+    }
+}
