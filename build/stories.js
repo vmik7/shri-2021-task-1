@@ -437,7 +437,136 @@ window.renderTemplate = function(alias, data) {
         `;
     }
     else if (alias === 'activity') {
-        html = 'Карта активности, алиас шаблона activity';
+
+        // Ключи для дней недели
+        let keysPerDay = [ 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun' ];
+
+        // Считаем значения карты для портретной ориентации
+        let valuesPortrait = []; // [24]x[7]
+        for (let i = 0; i < 24; i++) {
+            valuesPortrait[i] = [];
+            for (let j = 0; j < 7; j++) {
+                valuesPortrait[i][j] = slideData.data[keysPerDay[j]][i];
+            }
+        }
+
+        // Считаем максимальное значение для портретной ориентации
+        let maxValuePortrait = valuesPortrait[0][0];
+        for (let i = 0; i < 24; i++) {
+            for (let j = 0; j < 7; j++) {
+                if (valuesPortrait[i][j] > maxValuePortrait) {
+                    maxValuePortrait = valuesPortrait[i][j];
+                }
+            }
+        }
+
+        // Вычисляем шкалу для легенды в портретной ориентации
+        let breakPointsPortrait = [];
+        breakPointsPortrait[0] = 0;
+        breakPointsPortrait[1] = Math.max(2, Math.floor(maxValuePortrait / 3));
+        breakPointsPortrait[2] = Math.max(4, 2 * Math.floor(maxValuePortrait / 3));
+        breakPointsPortrait[3] = Math.max(6, maxValuePortrait);
+
+
+        // Считаем значения карты для ландшафтной ориентации
+        let valuesLandscape = []; // [7]x[12]
+        for (let i = 0; i < 7; i++) {
+            valuesLandscape[i] = [];
+            for (let j = 0; j < 12; j++) {
+                valuesLandscape[i][j] = slideData.data[keysPerDay[i]][2 * j] + slideData.data[keysPerDay[i]][2 * j + 1]
+            }
+        }
+
+        // Считаем максимальное значение для ландшафтной ориентации
+        let maxValueLandscape = valuesLandscape[0][0];
+        for (let i = 0; i < 7; i++) {
+            for (let j = 0; j < 12; j++) {
+                if (valuesLandscape[i][j] > maxValueLandscape) {
+                    maxValueLandscape = valuesLandscape[i][j];
+                }
+            }
+        }
+
+        // Вычисляем шкалу для легенды в ландшафтной ориентации
+        let breakPointsLandscape = [];
+        breakPointsLandscape[1] = Math.max(2, Math.floor(maxValueLandscape / 3));
+        breakPointsLandscape[2] = Math.max(4, 2 * Math.floor(maxValueLandscape / 3));
+        breakPointsLandscape[3] = Math.max(6, maxValueLandscape);
+
+        // Эта функция будет навешивать нужный модификатор на класс стобика
+        let getColumnMod = (value, breakPoints) => {
+            if (value == 0)
+                return 'min';
+            else if (value <= breakPoints[1])
+                return 'mid';
+            else if (value <= breakPoints[2])
+                return 'max';
+            return 'extra';
+        }
+        
+        // Генерируем html для портретной ориентации
+        let htmlPortrait = '';
+        for (let i = 0; i < 24; i++) {
+            htmlPortrait += '<div class="map__row">';
+            for (let j = 0; j < 7; j++) {
+                htmlPortrait += `<div class="map__col map__col_${ getColumnMod(valuesPortrait[i][j], breakPointsPortrait) }"></div>`;
+            }
+            htmlPortrait += '</div>';
+        }
+
+        // Генерируем html для ландшафтной ориентации
+        let htmlLandscape = '';
+        for (let i = 0; i < 7; i++) {
+            htmlLandscape += '<div class="map__row">';
+            for (let j = 0; j < 12; j++) {
+                htmlLandscape += `<div class="map__col map__col_${ getColumnMod(valuesLandscape[i][j], breakPointsLandscape) }"></div>`;
+            }
+            htmlLandscape += '</div>';
+        }
+
+        // Формируем финальный html
+        html = `
+            <div class="slide activity">
+                <h1 class="slide__title">${ slideData.title }</h1>
+                <p class="slide__subtitle">${ slideData.subtitle }</p>
+                <div class="slide__content activity__content">
+                    <div class="activity__figure">
+                        <div class="map map__orientation_portrait">
+                            ${ htmlPortrait }
+                        </div>
+                        <div class="map map__orientation_landscape">
+                            ${ htmlLandscape }
+                        </div>
+                    </div>
+                    <div class="activity__legend">
+                        <div class="activity__legend-item">
+                            <div class="activity__legend-tile"><div class="activity__legend-segment"></div></div>
+                            <div class="activity__legend-label activity__legend-label_portrait">1 час</div>
+                            <div class="activity__legend-label activity__legend-label_landscape">2 часa</div>
+                        </div>
+                        <div class="activity__legend-item">
+                            <div class="activity__legend-tile"></div>
+                            <div class="activity__legend-label">0</div>
+                        </div>
+                        <div class="activity__legend-item">
+                            <div class="activity__legend-tile"></div>
+                            <div class="activity__legend-label activity__legend-label_portrait">1 - ${ breakPointsPortrait[1] }</div>
+                            <div class="activity__legend-label activity__legend-label_landscape">1 - ${ breakPointsLandscape[1] }</div>
+                        </div>
+                        <div class="activity__legend-item">
+                            <div class="activity__legend-tile"></div>
+                            <div class="activity__legend-label activity__legend-label_portrait">${ breakPointsPortrait[1] + 1 } - ${ breakPointsPortrait[2] }</div>
+                            <div class="activity__legend-label activity__legend-label_landscape">${ breakPointsLandscape[1] + 1 } - ${ breakPointsLandscape[2] }</div>
+                        </div>
+                        <div class="activity__legend-item">
+                            <div class="activity__legend-tile"></div>
+                            <div class="activity__legend-label activity__legend-label_portrait">${ breakPointsPortrait[2] + 1 } - ${ breakPointsPortrait[3] }</div>
+                            <div class="activity__legend-label activity__legend-label_landscape">${ breakPointsLandscape[2] + 1 } - ${ breakPointsLandscape[3] }</div>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        `;
     }
 
     return html;
