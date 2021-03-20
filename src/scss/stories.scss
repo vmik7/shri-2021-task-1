@@ -83,6 +83,11 @@ a {
     --button-fill: var(--white);
     --button-fill-active: var(--grey);
 
+    --graph-accent-background: radial-gradient(81.14% 100% at 50% 0%, #FFA300 0%, #2D1C00 100%);
+    --graph-accent-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.4), inset 0px 6px 15px rgba(255, 162, 0, 0.5);
+    --graph-background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%), radial-gradient(149.08% 93.3% at 38.75% 72.1%, #000000 0%, #231900 0.01%, #4D4D4D 100%);
+    --graph-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.2), inset 2px 2px 16px rgba(103, 103, 103, 0.6);
+
     --diagram-item-l1-fill: url(#grad-l1-dark);
     --diagram-item-l2-fill: url(#grad-l2-dark);
     --diagram-item-l3-fill: url(#grad-l3-dark);
@@ -98,15 +103,15 @@ a {
     // --diagram-item-l3-shadow: 0px 0px 20px -8px rgba(0, 0, 0, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(139, 139, 139, 0.9);
     // --diagram-item-l4-shadow: 0px 0px 20px -8px rgba(96, 96, 96, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(38, 38, 38, 0.9);
 
-    // --diagram-dot-l1-background: radial-gradient(100% 100% at 50% 0%, rgba(255, 184, 0, 0.8) 0%, rgba(91, 66, 0, 0.8) 100%);
-    // --diagram-dot-l2-background: radial-gradient(100% 100% at 50% 0%, rgba(165, 119, 0, 0.8) 0%, rgba(91, 66, 0, 0.8) 100%);
-    // --diagram-dot-l3-background: radial-gradient(100% 100% at 50% 0%, rgba(151, 151, 151, 0.5) 0%, rgba(41, 41, 41, 0.5) 100%);
-    // --diagram-dot-l4-background: radial-gradient(100% 100% at 50% 0%, rgba(62, 62, 62, 0.5) 0%, rgba(40, 40, 40, 0.5) 100%);
+    --diagram-dot-l1-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 163, 0, 0.8) 71.88%, rgba(91, 58, 0, 0.8) 100%);
+    --diagram-dot-l2-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(99, 63, 0, 0.5) 72.92%, rgba(15, 9, 0, 0.5) 100%);
+    --diagram-dot-l3-background: radial-gradient(100% 100% at 50% 0%, rgba(151, 151, 151, 0.5) 0%, rgba(41, 41, 41, 0.5) 100%);
+    --diagram-dot-l4-background: radial-gradient(100% 100% at 50% 0%, rgba(62, 62, 62, 0.5) 0%, rgba(40, 40, 40, 0.5) 100%);
 
-    // --diagram-dot-l1-shadow: 0px 0px 20px -8px rgba(247, 178, 1, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 12px rgba(255, 184, 0, 0.9);
-    // --diagram-dot-l2-shadow: 0px 0px 20px -8px rgba(247, 178, 1, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5);
-    // --diagram-dot-l3-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5);
-    // --diagram-dot-l4-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5);
+    --diagram-dot-l1-shadow: 0px 0px 20px -8px rgba(248, 158, 0, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 162, 0, 0.9);
+    --diagram-dot-l2-shadow: 0px 0px 20px -8px rgba(147, 93, 0, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(202, 129, 0, 0.9);
+    --diagram-dot-l3-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5);
+    --diagram-dot-l4-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5);
 
     --map-legend-seg-background: radial-gradient(51.52% 129.57% at 48.48% 50%, rgba(64, 59, 54, 0) 0%, rgba(19, 18, 17, 0.5) 100%);
     --map-legend-seg-shadow: inset 0px -1px 2px rgba(255, 255, 255, 0.25), inset 3px 1px 16px rgba(112, 102, 94, 0.3);
@@ -162,6 +167,11 @@ a {
     --button-fill: var(--yellow);
     --button-fill-active: var(--grey-light);
 
+    --graph-accent-background: linear-gradient(180deg, #FFF2D1 0.82%, #FFD66C 100%);
+    --graph-accent-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.8);
+    --graph-background: linear-gradient(180deg, rgba(244, 244, 244, 0.9) 0.82%, #E9E9E9 100%, rgba(234, 234, 234, 0) 100%);
+    --graph-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(207, 207, 207, 0.5);
+
     --diagram-item-l1-fill: url(#grad-l1-light);
     --diagram-item-l2-fill: url(#grad-l2-light);
     --diagram-item-l3-fill: url(#grad-l3-light);
@@ -177,15 +187,15 @@ a {
     // --diagram-item-l3-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(105, 105, 105, 0.2);
     // --diagram-item-l4-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(131, 131, 131, 0.6);
 
-    // --diagram-dot-l1-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 184, 0, 0.56) 81.25%, rgba(255, 239, 153, 0.32) 100%);
-    // --diagram-dot-l2-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 184, 0, 0.24) 81.25%, rgba(255, 239, 153, 0.12) 100%);
-    // --diagram-dot-l3-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(166, 166, 166, 0.1725) 82.81%, rgba(203, 203, 203, 0.05) 92.19%);
-    // --diagram-dot-l4-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(191, 191, 191, 0.345) 82.81%, rgba(228, 228, 228, 0.1) 92.19%);
+    --diagram-dot-l1-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 184, 0, 0.56) 81.25%, rgba(255, 239, 153, 0.32) 100%);
+    --diagram-dot-l2-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 184, 0, 0.24) 81.25%, rgba(255, 239, 153, 0.12) 100%);
+    --diagram-dot-l3-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(166, 166, 166, 0.1725) 82.81%, rgba(203, 203, 203, 0.05) 92.19%);
+    --diagram-dot-l4-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(191, 191, 191, 0.345) 82.81%, rgba(228, 228, 228, 0.1) 92.19%);
 
-    // --diagram-dot-l1-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.9);
-    // --diagram-dot-l2-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.4);
-    // --diagram-dot-l3-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(105, 105, 105, 0.2);
-    // --diagram-dot-l4-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(131, 131, 131, 0.6);
+    --diagram-dot-l1-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.9);
+    --diagram-dot-l2-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.4);
+    --diagram-dot-l3-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(105, 105, 105, 0.2);
+    --diagram-dot-l4-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(131, 131, 131, 0.6);
 
     --map-legend-seg-background: radial-gradient(2408.25% 2730.55% at 89.06% 78.28%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.8) 100%);
     --map-legend-seg-shadow: inset -1px 0px 2px rgba(255, 255, 255, 0.2), inset 1px 1px 16px rgba(103, 103, 103, 0.2);
@@ -406,6 +416,7 @@ body {
 // User block
 
 .user {
+    font-family: 'Roboto', serif;
     border-radius: 6px;
     max-width: 104px;
     text-align: center;
@@ -431,7 +442,7 @@ body {
         position: absolute;
         bottom: 100%;
         left: 50%;
-        transform: translate(-50%, 8px);
+        transform: translate(-50%, 10px);
 
         font-weight: 700;
         font-size: 32px;
@@ -664,12 +675,12 @@ body {
         width: 100%;
         max-width: 40px;
         border-radius: 6px;
-        background: var(--bar-background);
-        box-shadow: var(--bar-shadow);
+        background: var(--graph-background);
+        box-shadow: var(--graph-shadow);
     }
     &__item_active &__bar {
-        background: var(--bar-accent-background);
-        box-shadow: var(--bar-accent-shadow);
+        background: var(--graph-accent-background);
+        box-shadow: var(--graph-accent-shadow);
     }
 
     &__label {
@@ -739,7 +750,7 @@ body {
                 content: '';
                 display: block;
                 height: 2px;
-                background: var(--grey);
+                background: var(--subtitle-color);
                 opacity: 0.3;
 
                 position: absolute;
@@ -836,6 +847,7 @@ body {
         @media screen and (orientation: landscape) {
             font-size: 16px;
             line-height: 18px;
+            margin-top: 6px;
         }
     }
 }
@@ -992,7 +1004,7 @@ body {
 // Map block
 
 .map {
-    margin-top: 40px;
+    margin-top: 34px;
     @media screen and (orientation: landscape) {
         margin-top: 23px;
     }
@@ -1013,7 +1025,7 @@ body {
     }
     &__row {
         display: flex;
-        margin-top: -17px;
+        margin-top: -17.3px;
         @media screen and (orientation: landscape) {
             margin-top: -13px;
         }

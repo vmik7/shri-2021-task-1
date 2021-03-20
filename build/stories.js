@@ -417,10 +417,10 @@ window.renderTemplate = function(alias, data) {
                                 <stop offset="0.828125" stop-color="#BFBFBF" stop-opacity="0.69"/>
                                 <stop offset="0.921875" stop-color="#E4E4E4" stop-opacity="0.2"/>
                             </radialGradient>
-                            <circle class="pie-chart__segment pie-chart__segment_l1" cx="0" cy="0" r="159.1549430918954" fill="transparent" stroke-width="60" stroke-dasharray="${ percents[0] - 5 } ${ 1005 - percents[0] }" stroke-dashoffset="${ offsets[0] }"></circle>
-                            <circle class="pie-chart__segment pie-chart__segment_l2" cx="0" cy="0" r="159.1549430918954" fill="transparent" stroke-width="60" stroke-dasharray="${ percents[1] - 5 } ${ 1005 - percents[1] }" stroke-dashoffset="${ offsets[1] }"></circle>
-                            <circle class="pie-chart__segment pie-chart__segment_l3" cx="0" cy="0" r="159.1549430918954" fill="transparent" stroke-width="60" stroke-dasharray="${ percents[2] - 5 } ${ 1005 - percents[2] }" stroke-dashoffset="${ offsets[2] }"></circle>
-                            <circle class="pie-chart__segment pie-chart__segment_l4" cx="0" cy="0" r="159.1549430918954" fill="transparent" stroke-width="60" stroke-dasharray="${ percents[3] - 5 } ${ 1005 - percents[3] }" stroke-dashoffset="${ offsets[3] }"></circle>
+                            <circle class="pie-chart__segment pie-chart__segment_l1" cx="0" cy="0" r="159.1549430918954" fill="transparent" stroke-width="57" stroke-dasharray="${ percents[0] - 3 } ${ 1003 - percents[0] }" stroke-dashoffset="${ offsets[0] }"></circle>
+                            <circle class="pie-chart__segment pie-chart__segment_l2" cx="0" cy="0" r="159.1549430918954" fill="transparent" stroke-width="57" stroke-dasharray="${ percents[1] - 3 } ${ 1003 - percents[1] }" stroke-dashoffset="${ offsets[1] }"></circle>
+                            <circle class="pie-chart__segment pie-chart__segment_l3" cx="0" cy="0" r="159.1549430918954" fill="transparent" stroke-width="57" stroke-dasharray="${ percents[2] - 3 } ${ 1003 - percents[2] }" stroke-dashoffset="${ offsets[2] }"></circle>
+                            <circle class="pie-chart__segment pie-chart__segment_l4" cx="0" cy="0" r="159.1549430918954" fill="transparent" stroke-width="57" stroke-dasharray="${ percents[3] - 3 } ${ 1003 - percents[3] }" stroke-dashoffset="${ offsets[3] }"></circle>
                         </svg>
                         <div class="diagram__center-block">
                             <div class="diagram__text-total">${ slideData.totalText }</div>
@@ -573,18 +573,18 @@ window.renderTemplate = function(alias, data) {
                         </div>
                         <div class="activity__legend-item">
                             <div class="activity__legend-tile"></div>
-                            <div class="activity__legend-label activity__legend-label_portrait">1 - ${ breakPointsPortrait[1] }</div>
-                            <div class="activity__legend-label activity__legend-label_landscape">1 - ${ breakPointsLandscape[1] }</div>
+                            <div class="activity__legend-label activity__legend-label_portrait">1&thinsp;—&thinsp;${ breakPointsPortrait[1] }</div>
+                            <div class="activity__legend-label activity__legend-label_landscape">1&thinsp;—&thinsp;${ breakPointsLandscape[1] }</div>
                         </div>
                         <div class="activity__legend-item">
                             <div class="activity__legend-tile"></div>
-                            <div class="activity__legend-label activity__legend-label_portrait">${ breakPointsPortrait[1] + 1 } - ${ breakPointsPortrait[2] }</div>
-                            <div class="activity__legend-label activity__legend-label_landscape">${ breakPointsLandscape[1] + 1 } - ${ breakPointsLandscape[2] }</div>
+                            <div class="activity__legend-label activity__legend-label_portrait">${ breakPointsPortrait[1] + 1 }&thinsp;—&thinsp;${ breakPointsPortrait[2] }</div>
+                            <div class="activity__legend-label activity__legend-label_landscape">${ breakPointsLandscape[1] + 1 }&thinsp;—&thinsp;${ breakPointsLandscape[2] }</div>
                         </div>
                         <div class="activity__legend-item">
                             <div class="activity__legend-tile"></div>
-                            <div class="activity__legend-label activity__legend-label_portrait">${ breakPointsPortrait[2] + 1 } - ${ breakPointsPortrait[3] }</div>
-                            <div class="activity__legend-label activity__legend-label_landscape">${ breakPointsLandscape[2] + 1 } - ${ breakPointsLandscape[3] }</div>
+                            <div class="activity__legend-label activity__legend-label_portrait">${ breakPointsPortrait[2] + 1 }&thinsp;—&thinsp;${ breakPointsPortrait[3] }</div>
+                            <div class="activity__legend-label activity__legend-label_landscape">${ breakPointsLandscape[2] + 1 }&thinsp;—&thinsp;${ breakPointsLandscape[3] }</div>
                         </div>
                     </div>
                 </div>
