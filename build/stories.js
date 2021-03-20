@@ -2,22 +2,6 @@
 // Функция рендеринга слайдов
 window.renderTemplate = function(alias, data) {
 
-    // *** Если передаём JSON с помощью инлайн-строки
-
-    // Преобразуем html-кавычки в нормальные
-    // let correctString = data.replace(/&#34;/g, `"`);
-
-    // Парсим JSON данные
-    // let slideData = JSON.parse(correctString);
-
-    // ***
-
-    // *** Если передаём JSON с помощью инлайн-строки
-
-    let slideData = data;
-
-    // ***
-
     // html-строка, которую будем возвращать
     let html = 'тут какая-то ошибка, неправильный alias';
 
@@ -30,11 +14,11 @@ window.renderTemplate = function(alias, data) {
         let selectedUserIndex = -1;
 
         // Если шаблон leaders используется для отображения результатов голосования, то нужно найти участника, за которого проголосовали
-        if (slideData.selectedUserId) {
+        if (data.selectedUserId) {
 
             // Ищем выбранного пользователя в массиве
-            for (let i = 0; i < slideData.users.length; i++) {
-                if (slideData.users[i].id === slideData.selectedUserId) {
+            for (let i = 0; i < data.users.length; i++) {
+                if (data.users[i].id === data.selectedUserId) {
                     selectedUserIndex = i;
                     break;
                 }
@@ -42,70 +26,70 @@ window.renderTemplate = function(alias, data) {
 
             // Если он стоит слишком далеко, ставим его на 5 место
             if (selectedUserIndex >= 5) {
-                let tmp = slideData.users[4];
-                slideData.users[4] = slideData.users[selectedUserIndex];
-                slideData.users[selectedUserIndex] = tmp;
+                let tmp = data.users[4];
+                data.users[4] = data.users[selectedUserIndex];
+                data.users[selectedUserIndex] = tmp;
             }
         }
 
         // html для пользователя, за которого проголосовали, но он не в топ 3
         let htmlToBottomPosition = '';
-        if (slideData.selectedUserId && selectedUserIndex >= 3) {
+        if (data.selectedUserId && selectedUserIndex >= 3) {
             htmlToBottomPosition = `
                 <div class="user leaders__user leaders__user_bottom">
                     <div class="user__avatar">
                         <picture>
-                            <img	src="assets/images/1x/${ slideData.users[4].avatar }"
-                                    srcset="assets/images/2x/${ slideData.users[4].avatar } 2x"
+                            <img	src="assets/images/1x/${ data.users[4].avatar }"
+                                    srcset="assets/images/2x/${ data.users[4].avatar } 2x"
                                     class="user__photo"
                                     alt="avatar">
                         </picture>
                         <div class="user__emoji">👍</div>
                     </div>
-                    <div class="user__name">${ slideData.users[4].name }</div>
-                    <div class="user__value-text">${ slideData.users[4].valueText }</div>
+                    <div class="user__name">${ data.users[4].name }</div>
+                    <div class="user__value-text">${ data.users[4].valueText }</div>
                 </div>
-                <div class="leaders__place-number leaders__place-number_bottom">${ (slideData.selectedUserId && selectedUserIndex >= 5 ? selectedUserIndex + 1 : 5) }</div>
+                <div class="leaders__place-number leaders__place-number_bottom">${ (data.selectedUserId && selectedUserIndex >= 5 ? selectedUserIndex + 1 : 5) }</div>
             `;
         }
 
         // Формируем html
         html = `
             <div class="slide leaders">
-            <h1 class="slide__title">${ slideData.title }</h1>
-            <p class="slide__subtitle">${ slideData.subtitle }</p>
+            <h1 class="slide__title">${ data.title }</h1>
+            <p class="slide__subtitle">${ data.subtitle }</p>
             <div class="slide__content leaders__content">
                 <div class="leaders__column">
                     <div class="user leaders__user">
                         <div class="user__avatar">
                             <picture>
-                                <img	src="assets/images/1x/${ slideData.users[4].avatar }"
-                                        srcset="assets/images/2x/${ slideData.users[4].avatar } 2x"
+                                <img	src="assets/images/1x/${ data.users[4].avatar }"
+                                        srcset="assets/images/2x/${ data.users[4].avatar } 2x"
                                         class="user__photo"
                                         alt="avatar">
                             </picture>
-                            <div class="user__emoji">${ (slideData.selectedUserId && selectedUserIndex >= 4 ? '👍' : '') }</div>
+                            <div class="user__emoji">${ (data.selectedUserId && selectedUserIndex >= 4 ? '👍' : '') }</div>
                         </div>
-                        <div class="user__name">${ slideData.users[4].name }</div>
-                        <div class="user__value-text">${ slideData.users[4].valueText }</div>
+                        <div class="user__name">${ data.users[4].name }</div>
+                        <div class="user__value-text">${ data.users[4].valueText }</div>
                     </div>
                     <div class="leaders__stand">
-                        <div class="leaders__place-number">${ (slideData.selectedUserId && selectedUserIndex >= 5 ? selectedUserIndex + 1 : 5) }</div>
+                        <div class="leaders__place-number">${ (data.selectedUserId && selectedUserIndex >= 5 ? selectedUserIndex + 1 : 5) }</div>
                     </div>
                 </div>
                 <div class="leaders__column">
                     <div class="user leaders__user">
                         <div class="user__avatar">
                             <picture>
-                                <img	src="assets/images/1x/${ slideData.users[2].avatar }"
-                                        srcset="assets/images/2x/${ slideData.users[2].avatar } 2x"
+                                <img	src="assets/images/1x/${ data.users[2].avatar }"
+                                        srcset="assets/images/2x/${ data.users[2].avatar } 2x"
                                         class="user__photo"
                                         alt="avatar">
                             </picture>
-                            <div class="user__emoji">${ (slideData.selectedUserId && selectedUserIndex == 2 ? '👍' : '') }</div>
+                            <div class="user__emoji">${ (data.selectedUserId && selectedUserIndex == 2 ? '👍' : '') }</div>
                         </div>
-                        <div class="user__name">${ slideData.users[2].name }</div>
-                        <div class="user__value-text">${ slideData.users[2].valueText }</div>
+                        <div class="user__name">${ data.users[2].name }</div>
+                        <div class="user__value-text">${ data.users[2].valueText }</div>
                     </div>
                     <div class="leaders__stand">
                         <div class="leaders__place-number">3</div>
@@ -115,15 +99,15 @@ window.renderTemplate = function(alias, data) {
                     <div class="user leaders__user">
                         <div class="user__avatar">
                             <picture>
-                                <img	src="assets/images/1x/${ slideData.users[0].avatar }"
-                                        srcset="assets/images/2x/${ slideData.users[0].avatar } 2x"
+                                <img	src="assets/images/1x/${ data.users[0].avatar }"
+                                        srcset="assets/images/2x/${ data.users[0].avatar } 2x"
                                         class="user__photo"
                                         alt="avatar">
                             </picture>
-                            <div class="user__emoji">${ slideData.emoji }</div>
+                            <div class="user__emoji">${ data.emoji }</div>
                         </div>
-                        <div class="user__name">${ slideData.users[0].name }</div>
-                        <div class="user__value-text">${ slideData.users[0].valueText }</div>
+                        <div class="user__name">${ data.users[0].name }</div>
+                        <div class="user__value-text">${ data.users[0].valueText }</div>
                     </div>
                     <div class="leaders__stand">
                         <div class="leaders__place-number">1</div>
@@ -134,15 +118,15 @@ window.renderTemplate = function(alias, data) {
                     <div class="user leaders__user">
                         <div class="user__avatar">
                             <picture>
-                                <img	src="assets/images/1x/${ slideData.users[1].avatar }"
-                                        srcset="assets/images/2x/${ slideData.users[1].avatar } 2x"
+                                <img	src="assets/images/1x/${ data.users[1].avatar }"
+                                        srcset="assets/images/2x/${ data.users[1].avatar } 2x"
                                         class="user__photo"
                                         alt="avatar">
                             </picture>
-                            <div class="user__emoji">${ (slideData.selectedUserId && selectedUserIndex == 1 ? '👍' : '') }</div>
+                            <div class="user__emoji">${ (data.selectedUserId && selectedUserIndex == 1 ? '👍' : '') }</div>
                         </div>
-                        <div class="user__name">${ slideData.users[1].name }</div>
-                        <div class="user__value-text">${ slideData.users[1].valueText }</div>
+                        <div class="user__name">${ data.users[1].name }</div>
+                        <div class="user__value-text">${ data.users[1].valueText }</div>
                     </div>
                     <div class="leaders__stand">
                         <div class="leaders__place-number">2</div>
@@ -152,15 +136,15 @@ window.renderTemplate = function(alias, data) {
                     <div class="user leaders__user">
                         <div class="user__avatar">
                             <picture>
-                                <img	src="assets/images/1x/${ slideData.users[3].avatar }"
-                                        srcset="assets/images/2x/${ slideData.users[3].avatar } 2x"
+                                <img	src="assets/images/1x/${ data.users[3].avatar }"
+                                        srcset="assets/images/2x/${ data.users[3].avatar } 2x"
                                         class="user__photo"
                                         alt="avatar">
                             </picture>
-                            <div class="user__emoji">${ (slideData.selectedUserId && selectedUserIndex == 3 ? '👍' : '') }</div>
+                            <div class="user__emoji">${ (data.selectedUserId && selectedUserIndex == 3 ? '👍' : '') }</div>
                         </div>
-                        <div class="user__name">${ slideData.users[3].name }</div>
-                        <div class="user__value-text">${ slideData.users[3].valueText }</div>
+                        <div class="user__name">${ data.users[3].name }</div>
+                        <div class="user__value-text">${ data.users[3].valueText }</div>
                     </div>
                     <div class="leaders__stand">
                         <div class="leaders__place-number">4</div>
@@ -178,39 +162,39 @@ window.renderTemplate = function(alias, data) {
         let renderUser = (index) => {
 
             // Сдвигаем индекс на offset, если он задан
-            index += slideData.offset || 0;
+            index += data.offset || 0;
 
             // Если на странице есть место, а пользователи закончились - выводим заглушку
-            if (index >= slideData.users.length) {
+            if (index >= data.users.length) {
                 return `
-                    <button class="user vote__user vote__user_hidden" data-action="update" data-params="{ alias: 'leaders', data: { selectedUserId: ${ slideData.users[slideData.offset].id } } }" disabled>
+                    <button class="user vote__user vote__user_hidden" data-action="update" data-params="{ alias: 'leaders', data: { selectedUserId: ${ data.users[data.offset].id } } }" disabled>
                         <div class="user__avatar">
                             <picture>
-                                <img	src="assets/images/1x/${ slideData.users[slideData.offset].avatar }"
-                                        srcset="assets/images/2x/${ slideData.users[slideData.offset].avatar } 2x"
+                                <img	src="assets/images/1x/${ data.users[data.offset].avatar }"
+                                        srcset="assets/images/2x/${ data.users[data.offset].avatar } 2x"
                                         class="user__photo"
                                         alt="avatar">
                             </picture>
                             <div class="user__emoji"></div>
                         </div>
-                        <div class="user__name">${ slideData.users[slideData.offset].name }</div>
+                        <div class="user__name">${ data.users[data.offset].name }</div>
                     </button>
                 `;
             }
 
             // Если всё нормально, то рендерим пользователя
             return `
-                <button class="user vote__user${ slideData.selectedUserId && slideData.selectedUserId === slideData.users[index].id ? ' vote__user_active' : '' }" data-action="update" data-params="{ alias: 'leaders', data: { selectedUserId: ${ slideData.users[index].id } } }"${ slideData.selectedUserId && slideData.selectedUserId === slideData.users[index].id ? ' disabled' : '' }>
+                <button class="user vote__user${ data.selectedUserId && data.selectedUserId === data.users[index].id ? ' vote__user_active' : '' }" data-action="update" data-params="{ alias: 'leaders', data: { selectedUserId: ${ data.users[index].id } } }"${ data.selectedUserId && data.selectedUserId === data.users[index].id ? ' disabled' : '' }>
                     <div class="user__avatar">
                         <picture>
-                            <img	src="assets/images/1x/${ slideData.users[index].avatar }"
-                                    srcset="assets/images/2x/${ slideData.users[index].avatar } 2x" 
+                            <img	src="assets/images/1x/${ data.users[index].avatar }"
+                                    srcset="assets/images/2x/${ data.users[index].avatar } 2x" 
                                     class="user__photo"
                                     alt="avatar">
                         </picture>
-                        <div class="user__emoji">${ slideData.selectedUserId && slideData.selectedUserId === slideData.users[index].id ? '👍' : '' }</div>
+                        <div class="user__emoji">${ data.selectedUserId && data.selectedUserId === data.users[index].id ? '👍' : '' }</div>
                     </div>
-                    <div class="user__name">${ slideData.users[index].name }</div>
+                    <div class="user__name">${ data.users[index].name }</div>
                 </button>
             `;
         }
@@ -218,8 +202,8 @@ window.renderTemplate = function(alias, data) {
         // Формируем html
         html = `
             <div class="slide vote">
-                <h1 class="slide__title">${ slideData.title }</h1>
-                <p class="slide__subtitle">${ slideData.subtitle }</p>
+                <h1 class="slide__title">${ data.title }</h1>
+                <p class="slide__subtitle">${ data.subtitle }</p>
                 <div class="slide__content vote__content vote__content_orientation_portrait">
                     <div class="vote__column">
                         ${ renderUser(0) }
@@ -283,33 +267,33 @@ window.renderTemplate = function(alias, data) {
 
         // Ищем индекс текущего стобца диаграммы
         let activeIndex = 0;
-        for (let i = 0; i < slideData.values.length; i++) {
-            if (slideData.values[i].active) {
+        for (let i = 0; i < data.values.length; i++) {
+            if (data.values[i].active) {
                 activeIndex = i;
                 break;
             }
         }
 
         // Ищем диапазон элементов, которые будем выводить
-        let indexR = Math.min(activeIndex + 2, slideData.values.length - 1);
+        let indexR = Math.min(activeIndex + 2, data.values.length - 1);
         let indexL = Math.max(indexR - 9 + 1, 0);
 
         // Ищем максимум по всем стобцам из диапазона
-        let maxValue = slideData.values[indexR].value;
+        let maxValue = data.values[indexR].value;
         for (let i = indexL; i < indexR; i++) {
-            maxValue = Math.max(maxValue, slideData.values[i].value);
+            maxValue = Math.max(maxValue, data.values[i].value);
         }
 
         // Рендерим столбики с нужной высотой
         let readyItemsHtml = ``;
         for (let i = indexL; i <= indexR; i++) {
             readyItemsHtml += `
-                <div class="graph__item${ slideData.values[i].active ? ' graph__item_active' : '' }">
+                <div class="graph__item${ data.values[i].active ? ' graph__item_active' : '' }">
                     <div class="graph__column">
-                        <div class="graph__value">${ i <= activeIndex ? slideData.values[i].value : '' }</div>
-                        <div class="graph__bar" style="height: calc(70% * ${ slideData.values[i].value } / ${ maxValue });"></div>
+                        <div class="graph__value">${ i <= activeIndex ? data.values[i].value : '' }</div>
+                        <div class="graph__bar" style="height: calc(70% * ${ data.values[i].value } / ${ maxValue });"></div>
                     </div>
-                    <div class="graph__label">${ slideData.values[i].title }</div>
+                    <div class="graph__label">${ data.values[i].title }</div>
                 </div>
             `;
         }
@@ -317,8 +301,8 @@ window.renderTemplate = function(alias, data) {
         // Формируем готовый html
         html = `
             <div class="slide chart">
-                <h1 class="slide__title">${ slideData.title }</h1>
-                <p class="slide__subtitle">${ slideData.subtitle }</p>
+                <h1 class="slide__title">${ data.title }</h1>
+                <p class="slide__subtitle">${ data.subtitle }</p>
                 <div class="slide__content chart__content">
                     <div class="chart__graph graph">
                         <div class="graph__track">
@@ -329,30 +313,30 @@ window.renderTemplate = function(alias, data) {
                         <div class="user user_view_inline chart__user">
                             <div class="user__avatar">
                                 <picture>
-                                    <img	src="assets/images/1x/${ slideData.users[0].avatar }"
-                                            srcset="assets/images/2x/${ slideData.users[0].avatar } 2x"
+                                    <img	src="assets/images/1x/${ data.users[0].avatar }"
+                                            srcset="assets/images/2x/${ data.users[0].avatar } 2x"
                                             class="user__photo"
                                             alt="avatar">
                                 </picture>
                             </div>
                             <div class="user__info">
-                                <div class="user__name">${ slideData.users[0].name }</div>
-                                <div class="user__value-text">${ slideData.users[0].valueText }</div>
+                                <div class="user__name">${ data.users[0].name }</div>
+                                <div class="user__value-text">${ data.users[0].valueText }</div>
                             </div>
                         </div>
                         <div class="chart__users-sep"></div>
                         <div class="user user_view_inline chart__user">
                             <div class="user__avatar">
                                 <picture>
-                                    <img	src="assets/images/1x/${ slideData.users[1].avatar }"
-                                            srcset="assets/images/2x/${ slideData.users[1].avatar } 2x"
+                                    <img	src="assets/images/1x/${ data.users[1].avatar }"
+                                            srcset="assets/images/2x/${ data.users[1].avatar } 2x"
                                             class="user__photo"
                                             alt="avatar">
                                 </picture>
                             </div>
                             <div class="user__info">
-                                <div class="user__name">${ slideData.users[1].name }</div>
-                                <div class="user__value-text">${ slideData.users[1].valueText }</div>
+                                <div class="user__name">${ data.users[1].name }</div>
+                                <div class="user__value-text">${ data.users[1].valueText }</div>
                             </div>
                         </div>
                     </div>
@@ -367,8 +351,8 @@ window.renderTemplate = function(alias, data) {
         // Выделяем числовую часть valueText и differenceText в отдельные массивы
         let values = [], diffs = [];
         for (let i = 0; i < 4; i++) {
-            values[i] = slideData.categories[i].valueText.match(/[+-]?[0-9]+/g);
-            diffs[i] = slideData.categories[i].differenceText.match(/[+-]?[0-9]+/g);
+            values[i] = data.categories[i].valueText.match(/[+-]?[0-9]+/g);
+            diffs[i] = data.categories[i].differenceText.match(/[+-]?[0-9]+/g);
         }
 
         // Cчитаем проценты для диаграммы
@@ -390,8 +374,8 @@ window.renderTemplate = function(alias, data) {
         // Формируем готовый html
         html = `
             <div class="slide diagram">
-                <h1 class="slide__title">${ slideData.title }</h1>
-                <p class="slide__subtitle">${ slideData.subtitle }</p>
+                <h1 class="slide__title">${ data.title }</h1>
+                <p class="slide__subtitle">${ data.subtitle }</p>
                 <div class="slide__content diagram__content">
                     <div class="diagram__figure">
                         <svg width="100%" height="100%" viewBox="-190 -190 380 380" class="diagram__pie-chart pie-chart">
@@ -433,32 +417,32 @@ window.renderTemplate = function(alias, data) {
                             <circle class="pie-chart__segment pie-chart__segment_l4" cx="0" cy="0" r="159.1549430918954" fill="transparent" stroke-width="57" stroke-dasharray="${ percents[3] - 3 } ${ 1003 - percents[3] }" stroke-dashoffset="${ offsets[3] }"></circle>
                         </svg>
                         <div class="diagram__center-block">
-                            <div class="diagram__text-total">${ slideData.totalText }</div>
-                            <div class="diagram__text-diff">${ slideData.differenceText }</div>
+                            <div class="diagram__text-total">${ data.totalText }</div>
+                            <div class="diagram__text-diff">${ data.differenceText }</div>
                         </div>
                     </div>
                     <div class="diagram__legend">
                         <div class="diagram__legend-line">
                             <div class="diagram__legend-dot diagram__legend-dot_l1"></div>
-                            <div class="diagram__legend-title">${ slideData.categories[0].title }</div>
+                            <div class="diagram__legend-title">${ data.categories[0].title }</div>
                             <div class="diagram__legend-diff">${ diffs[0] }</div>
                             <div class="diagram__legend-value">${ values[0] }</div>
                         </div>
                         <div class="diagram__legend-line">
                             <div class="diagram__legend-dot diagram__legend-dot_l2"></div>
-                            <div class="diagram__legend-title">${ slideData.categories[1].title }</div>
+                            <div class="diagram__legend-title">${ data.categories[1].title }</div>
                             <div class="diagram__legend-diff">${ diffs[1] }</div>
                             <div class="diagram__legend-value">${ values[1] }</div>
                         </div>
                         <div class="diagram__legend-line">
                             <div class="diagram__legend-dot diagram__legend-dot_l3"></div>
-                            <div class="diagram__legend-title">${ slideData.categories[2].title }</div>
+                            <div class="diagram__legend-title">${ data.categories[2].title }</div>
                             <div class="diagram__legend-diff">${ diffs[2] }</div>
                             <div class="diagram__legend-value">${ values[2] }</div>
                         </div>
                         <div class="diagram__legend-line">
                             <div class="diagram__legend-dot diagram__legend-dot_l4"></div>
-                            <div class="diagram__legend-title">${ slideData.categories[3].title }</div>
+                            <div class="diagram__legend-title">${ data.categories[3].title }</div>
                             <div class="diagram__legend-diff">${ diffs[3] }</div>
                             <div class="diagram__legend-value">${ values[3] }</div>
                         </div>
@@ -479,7 +463,7 @@ window.renderTemplate = function(alias, data) {
         for (let i = 0; i < 24; i++) {
             valuesPortrait[i] = [];
             for (let j = 0; j < 7; j++) {
-                valuesPortrait[i][j] = slideData.data[keysPerDay[j]][i];
+                valuesPortrait[i][j] = data.data[keysPerDay[j]][i];
             }
         }
 
@@ -506,7 +490,7 @@ window.renderTemplate = function(alias, data) {
         for (let i = 0; i < 7; i++) {
             valuesLandscape[i] = [];
             for (let j = 0; j < 12; j++) {
-                valuesLandscape[i][j] = slideData.data[keysPerDay[i]][2 * j] + slideData.data[keysPerDay[i]][2 * j + 1]
+                valuesLandscape[i][j] = data.data[keysPerDay[i]][2 * j] + data.data[keysPerDay[i]][2 * j + 1]
             }
         }
 
@@ -560,8 +544,8 @@ window.renderTemplate = function(alias, data) {
         // Формируем финальный html
         html = `
             <div class="slide activity">
-                <h1 class="slide__title">${ slideData.title }</h1>
-                <p class="slide__subtitle">${ slideData.subtitle }</p>
+                <h1 class="slide__title">${ data.title }</h1>
+                <p class="slide__subtitle">${ data.subtitle }</p>
                 <div class="slide__content activity__content">
                     <div class="activity__figure">
                         <div class="map map__orientation_portrait">
