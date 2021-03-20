@@ -2,11 +2,21 @@
 // Функция рендеринга слайдов
 window.renderTemplate = function(alias, data) {
 
+    // *** Если передаём JSON с помощью инлайн-строки
+
     // Преобразуем html-кавычки в нормальные
-    let correctString = data.replace(/&#34;/g, `"`);
+    // let correctString = data.replace(/&#34;/g, `"`);
 
     // Парсим JSON данные
-    let slideData = JSON.parse(correctString);
+    // let slideData = JSON.parse(correctString);
+
+    // ***
+
+    // *** Если передаём JSON с помощью инлайн-строки
+
+    let slideData = data;
+
+    // ***
 
     // html-строка, которую будем возвращать
     let html = 'тут какая-то ошибка, неправильный alias';
