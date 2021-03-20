@@ -65,7 +65,7 @@ a {
     --slide-background: radial-gradient(70.24% 70.24% at 49.87% 29.76%, rgba(19, 14, 0, 0.9) 0%, #000000 100%);
 
     --title-color: var(--white);
-    --subtitle-color: var(--grey-light);
+    --subtitle-color: var(--grey);
 
     --bar-accent-background: radial-gradient(91.67% 122.17% at 69.17% -11.17%, #FFA300 0%, #2D1C00 100%);
     --bar-accent-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.4), inset 0px 6px 15px rgba(255, 162, 0, 0.4);
@@ -144,7 +144,7 @@ a {
     --slide-background: #fff;
 
     --title-color: var(--black);
-    --subtitle-color: var(--grey);
+    --subtitle-color: var(--grey-light);
 
     --bar-accent-background: linear-gradient(180deg, #FFF2D1 0.82%, #FFD66C 100%);
     --bar-accent-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.8);
@@ -318,15 +318,15 @@ body {
 
     &__column:nth-child(1) &__stand {
         @media screen and (orientation: landscape) {
-            max-height: 22.82%;
+            max-height: 18.086vh;
         }
         margin-right: -16px;
         padding-right: 16px;
     }
     &__column:nth-child(2) &__stand {
-        max-height: 40.33%;
+        max-height: 33.684vh;
         @media screen and (orientation: landscape) {
-            max-height: 29.54%;
+            max-height: 23.405vh;
         }
         margin-right: -16px;
         padding-right: 16px;
@@ -336,16 +336,16 @@ body {
         background: var(--bar-accent-background);
         box-shadow: var(--bar-accent-shadow);
 
-        max-height: 58.25%;
+        max-height: 48.653vh;
         @media screen and (orientation: landscape) {
-            max-height: 36.25%;
+            max-height: 28.725vh;
         }
         z-index: 2;
     }
     &__column:nth-child(4) &__stand {
-        max-height: 49.29%;
+        max-height: 41.17vh;
         @media screen and (orientation: landscape) {
-            max-height: 29.54%;
+            max-height: 23.405vh;
         }
         margin-left: -16px;
         padding-left: 16px;
@@ -353,7 +353,7 @@ body {
     }
     &__column:nth-child(5) &__stand {
         @media screen and (orientation: landscape) {
-            max-height: 22.82%;
+            max-height: 18.086vh;
         }
         margin-left: -16px;
         padding-left: 16px;
@@ -429,9 +429,9 @@ body {
 
     &__emoji {
         position: absolute;
-        top: 0;
+        bottom: 100%;
         left: 50%;
-        transform: translate(-50%, calc(-100% + 10px));
+        transform: translate(-50%, 8px);
 
         font-weight: 700;
         font-size: 32px;
@@ -483,8 +483,8 @@ body {
     }
 }
 
-.theme_light .leaders__user_bottom .user__value-text {
-    color: var(--black);
+.leaders__user_bottom .user__value-text {
+    color: var(--title-color);
 }
 
 

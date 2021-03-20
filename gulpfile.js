@@ -3,7 +3,8 @@ let sourceFolder = 'src';
 
 let mypath = {
     build: {
-        css: projectFolder + '/',
+        html: projectFolder + '/',
+        css: projectFolder + '/'
     },
     src: {
         html: sourceFolder + '/*.html',
@@ -38,6 +39,7 @@ function browserSyncFunction() {
 
 function html() {
     return src(mypath.src.html)
+        .pipe(dest(mypath.build.html))
         .pipe(browserSync.stream());
 }
 
