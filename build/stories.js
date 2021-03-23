@@ -360,14 +360,14 @@ window.renderTemplate = function(alias, data) {
 
         let percents = [];
         for (let i = 0; i < 3; i++) {
-            percents[i] = Math.floor(values[i] * 1000 / sum);
+            percents[i] = values[i] * 1000 / sum;
         }
         percents[3] = 1000 - percents[0] - percents[1] - percents[2];
 
         // Считаем сдвиги секторов для диаграммы
         let offsets = [];
-        offsets[0] = 250 + 80;
-        offsets[1] = 1000 + 250 + 80 - percents[0];
+        offsets[0] = 251 + 80;
+        offsets[1] = 1000 + 251 + 80 - percents[0];
         offsets[2] = offsets[1] - percents[1];
         offsets[3] = offsets[2] - percents[2];
         
@@ -379,38 +379,86 @@ window.renderTemplate = function(alias, data) {
                 <div class="slide__content diagram__content">
                     <div class="diagram__figure">
                         <svg width="100%" height="100%" viewBox="-190 -190 380 380" class="diagram__pie-chart pie-chart">
-                            <radialGradient id="grad-l1-dark" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
-                                <stop offset="0.71875" stop-color="#FFA300"/>
-                                <stop offset="1" stop-color="#5B3A00"/>
-                            </radialGradient>
-                            <radialGradient id="grad-l2-dark" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
-                                <stop offset="0.729167" stop-color="#633F00"/>
-                                <stop offset="1" stop-color="#0F0900"/>
-                            </radialGradient>
-                            <radialGradient id="grad-l3-dark" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
-                                <stop offset="0.71875" stop-color="#9B9B9B"/>
-                                <stop offset="1" stop-color="#382900"/>
-                            </radialGradient>
-                            <radialGradient id="grad-l4-dark" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
-                                <stop offset="0.71875" stop-color="#4D4D4D"/>
-                                <stop offset="1" stop-color="#382900"/>
-                            </radialGradient>
-                            <radialGradient id="grad-l1-light" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
-                                <stop offset="0.8125" stop-color="#FFB800" stop-opacity="0.7"/>
-                                <stop offset="1" stop-color="#FFEF99" stop-opacity="0.4"/>
-                            </radialGradient>
-                            <radialGradient id="grad-l2-light" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
-                                <stop offset="0.8125" stop-color="#FFB800" stop-opacity="0.4"/>
-                                <stop offset="1" stop-color="#FFEF99" stop-opacity="0.2"/>  
-                            </radialGradient>
-                            <radialGradient id="grad-l3-light" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
-                                <stop offset="0.828125" stop-color="#A6A6A6" stop-opacity="0.69"/>
-                                <stop offset="0.921875" stop-color="#CBCBCB" stop-opacity="0.2"/>
-                            </radialGradient>
-                            <radialGradient id="grad-l4-light" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
-                                <stop offset="0.828125" stop-color="#BFBFBF" stop-opacity="0.69"/>
-                                <stop offset="0.921875" stop-color="#E4E4E4" stop-opacity="0.2"/>
-                            </radialGradient>
+                        <radialGradient id="grad-l1-dark" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
+                            <stop offset="0" stop-color="#EA9603"/>
+                            <stop offset="0.65" stop-color="#EA9603"/><!-- 0% -->
+                            <stop offset="0.75" stop-color="#BD7A04"/><!-- 30% -->
+                            <stop offset="0.80" stop-color="#9D6604"/><!-- 50% -->
+                            <stop offset="0.86" stop-color="#7F5304"/><!-- 70% -->
+                            <stop offset="0.92" stop-color="#875703"/><!-- 90% -->
+                            <stop offset="0.95" stop-color="#A97313"/><!-- 100% -->
+                            <stop offset="1" stop-color="#A97313"/>
+                        </radialGradient>
+                        <radialGradient id="grad-l2-dark" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
+                            <stop offset="0" stop-color="#805408"/>
+                            <stop offset="0.65" stop-color="#805408"/><!-- 0% -->
+                            <stop offset="0.75" stop-color="#472E04"/><!-- 30% -->
+                            <stop offset="0.80" stop-color="#322104"/><!-- 50% -->
+                            <stop offset="0.86" stop-color="#2A1B03"/><!-- 70% -->
+                            <stop offset="0.92" stop-color="#462D02"/><!-- 90% -->
+                            <stop offset="0.95" stop-color="#654206"/><!-- 100% -->
+                            <stop offset="1" stop-color="#654206"/>
+                        </radialGradient>
+                        <radialGradient id="grad-l3-dark" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
+                            <stop offset="0" stop-color="#6D6D6C"/>
+                            <stop offset="0.65" stop-color="#6D6D6C"/><!-- 0% -->
+                            <stop offset="0.75" stop-color="#4B4943"/><!-- 30% -->
+                            <stop offset="0.80" stop-color="#3C382D"/><!-- 50% -->
+                            <stop offset="0.86" stop-color="#383326"/><!-- 70% -->
+                            <stop offset="0.92" stop-color="#423D30"/><!-- 90% -->
+                            <stop offset="0.95" stop-color="#4E4A3F"/><!-- 100% -->
+                            <stop offset="1" stop-color="#4E4A3F"/>
+                        </radialGradient>
+                        <radialGradient id="grad-l4-dark" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
+                            <stop offset="0" stop-color="#35332F"/>
+                            <stop offset="0.65" stop-color="#35332F"/><!-- 0% -->
+                            <stop offset="0.75" stop-color="#35322A"/><!-- 30% -->
+                            <stop offset="0.80" stop-color="#332E22"/><!-- 50% -->
+                            <stop offset="0.86" stop-color="#2E2819"/><!-- 70% -->
+                            <stop offset="0.92" stop-color="#272113"/><!-- 90% -->
+                            <stop offset="0.95" stop-color="#252114"/><!-- 100% -->
+                            <stop offset="1" stop-color="#252114"/>
+                        </radialGradient>
+                        <radialGradient id="grad-l1-light" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
+                            <stop offset="0" stop-color="#FFC659"/>
+                            <stop offset="0.65" stop-color="#FFC659"/><!-- 0% -->
+                            <stop offset="0.75" stop-color="#FFD66E"/><!-- 30% -->
+                            <stop offset="0.80" stop-color="#FFE18F"/><!-- 50% -->
+                            <stop offset="0.86" stop-color="#FFEBAF"/><!-- 70% -->
+                            <stop offset="0.92" stop-color="#FFE3AB"/><!-- 90% -->
+                            <stop offset="0.95" stop-color="#FFDFA7"/><!-- 100% -->
+                            <stop offset="1" stop-color="#FFDFA7"/>
+                        </radialGradient>
+                        <radialGradient id="grad-l2-light" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
+                            <stop offset="0" stop-color="#FFE3AB"/>
+                            <stop offset="0.65" stop-color="#FFE3AB"/><!-- 0% -->
+                            <stop offset="0.75" stop-color="#FFEDC1"/><!-- 30% -->
+                            <stop offset="0.80" stop-color="#FFF4D4"/><!-- 50% -->
+                            <stop offset="0.86" stop-color="#FFF7DF"/><!-- 70% -->
+                            <stop offset="0.92" stop-color="#FFF2D8"/><!-- 90% -->
+                            <stop offset="0.95" stop-color="#FFEED1"/><!-- 100% -->
+                            <stop offset="1" stop-color="#FFEED1"/>
+                        </radialGradient>
+                        <radialGradient id="grad-l3-light" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
+                            <stop offset="0" stop-color="#E4E4E4"/>
+                            <stop offset="0.65" stop-color="#E4E4E4"/><!-- 0% -->
+                            <stop offset="0.75" stop-color="#EEEEEE"/><!-- 30% -->
+                            <stop offset="0.80" stop-color="#F4F4F4"/><!-- 50% -->
+                            <stop offset="0.86" stop-color="#F9F9F9"/><!-- 70% -->
+                            <stop offset="0.92" stop-color="#F1F1F1"/><!-- 90% -->
+                            <stop offset="0.95" stop-color="#F1F1F1"/><!-- 100% -->
+                            <stop offset="1" stop-color="#F1F1F1"/>
+                        </radialGradient>
+                        <radialGradient id="grad-l4-light" cx="0" cy="0" r="159.1549430918954" gradientUnits="userSpaceOnUse" gradientTransform="scale(1.25)">
+                            <stop offset="0" stop-color="#D0D0D0"/>
+                            <stop offset="0.65" stop-color="#D0D0D0"/><!-- 0% -->
+                            <stop offset="0.75" stop-color="#E5E5E5"/><!-- 30% -->
+                            <stop offset="0.80" stop-color="#EDEDED"/><!-- 50% -->
+                            <stop offset="0.86" stop-color="#F5F5F5"/><!-- 70% -->
+                            <stop offset="0.92" stop-color="#E3E3E3"/><!-- 90% -->
+                            <stop offset="0.95" stop-color="#E0E0E0"/><!-- 100% -->
+                            <stop offset="1" stop-color="#E0E0E0"/>
+                        </radialGradient>
                             <circle class="pie-chart__segment pie-chart__segment_l1" cx="0" cy="0" r="159.1549430918954" fill="transparent" stroke-width="57" stroke-dasharray="${ percents[0] - 3 } ${ 1003 - percents[0] }" stroke-dashoffset="${ offsets[0] }"></circle>
                             <circle class="pie-chart__segment pie-chart__segment_l2" cx="0" cy="0" r="159.1549430918954" fill="transparent" stroke-width="57" stroke-dasharray="${ percents[1] - 3 } ${ 1003 - percents[1] }" stroke-dashoffset="${ offsets[1] }"></circle>
                             <circle class="pie-chart__segment pie-chart__segment_l3" cx="0" cy="0" r="159.1549430918954" fill="transparent" stroke-width="57" stroke-dasharray="${ percents[2] - 3 } ${ 1003 - percents[2] }" stroke-dashoffset="${ offsets[2] }"></circle>
