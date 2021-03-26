@@ -1,4 +1,3 @@
-
 // Функция рендеринга слайдов
 window.renderTemplate = function(alias, data) {
 
@@ -11,45 +10,53 @@ window.renderTemplate = function(alias, data) {
         // * Шаблон "лидеры"
 
         // Индекс выбранного пользователя в массиве
-        let selectedUserIndex = -1;
+        let selectedUserIndex;
+
+        // Место, которое занял выбранный пользователь в голосовании
+        let selectedUserPlace;
 
         // Если шаблон leaders используется для отображения результатов голосования, то нужно найти участника, за которого проголосовали
         if (data.selectedUserId) {
 
             // Ищем выбранного пользователя в массиве
-            for (let i = 0; i < data.users.length; i++) {
-                if (data.users[i].id === data.selectedUserId) {
-                    selectedUserIndex = i;
-                    break;
-                }
-            }
+            data.users.some((user, index) => {
+
+                // Записываем данные о текущем пользователе
+                selectedUserIndex = index;
+                selectedUserPlace = index + 1;
+
+                // Если пользователь является выбранным, то перебор прекратиться,
+                // а в selectedUserIndex и selectedUserPlace останутся нужные данные
+                return user.id === data.selectedUserId;
+            });
 
             // Если он стоит слишком далеко, ставим его на 5 место
-            if (selectedUserIndex >= 5) {
+            if (selectedUserPlace > 5) {
                 let tmp = data.users[4];
                 data.users[4] = data.users[selectedUserIndex];
                 data.users[selectedUserIndex] = tmp;
+                selectedUserIndex = 4;
             }
         }
 
         // html для пользователя, за которого проголосовали, но он не в топ 3
         let htmlToBottomPosition = '';
-        if (data.selectedUserId && selectedUserIndex >= 3) {
+        if (data.selectedUserId && selectedUserPlace > 3) {
             htmlToBottomPosition = `
                 <div class="user leaders__user leaders__user_bottom">
                     <div class="user__avatar">
                         <picture>
-                            <img	src="assets/images/1x/${ data.users[4].avatar }"
-                                    srcset="assets/images/2x/${ data.users[4].avatar } 2x"
+                            <img	src="assets/images/1x/${ data.users[selectedUserIndex].avatar }"
+                                    srcset="assets/images/2x/${ data.users[selectedUserIndex].avatar } 2x"
                                     class="user__photo"
                                     alt="avatar">
                         </picture>
                         <div class="user__emoji">👍</div>
                     </div>
-                    <div class="user__name">${ data.users[4].name }</div>
-                    <div class="user__value-text">${ data.users[4].valueText }</div>
+                    <div class="user__name">${ data.users[selectedUserIndex].name }</div>
+                    <div class="user__value-text">${ data.users[selectedUserIndex].valueText }</div>
                 </div>
-                <div class="leaders__place-number leaders__place-number_bottom">${ (data.selectedUserId && selectedUserIndex >= 5 ? selectedUserIndex + 1 : 5) }</div>
+                <div class="leaders__place-number leaders__place-number_bottom">${ selectedUserPlace }</div>
             `;
         }
 
@@ -68,13 +75,13 @@ window.renderTemplate = function(alias, data) {
                                         class="user__photo"
                                         alt="avatar">
                             </picture>
-                            <div class="user__emoji">${ (data.selectedUserId && selectedUserIndex >= 4 ? '👍' : '') }</div>
+                            <div class="user__emoji">${ (selectedUserIndex === 4 ? '👍' : '') }</div>
                         </div>
                         <div class="user__name">${ data.users[4].name }</div>
                         <div class="user__value-text">${ data.users[4].valueText }</div>
                     </div>
                     <div class="leaders__stand">
-                        <div class="leaders__place-number">${ (data.selectedUserId && selectedUserIndex >= 5 ? selectedUserIndex + 1 : 5) }</div>
+                        <div class="leaders__place-number">${ (selectedUserIndex === 4 ? selectedUserPlace : 5) }</div>
                     </div>
                 </div>
                 <div class="leaders__column">
@@ -86,7 +93,7 @@ window.renderTemplate = function(alias, data) {
                                         class="user__photo"
                                         alt="avatar">
                             </picture>
-                            <div class="user__emoji">${ (data.selectedUserId && selectedUserIndex == 2 ? '👍' : '') }</div>
+                            <div class="user__emoji">${ (selectedUserIndex === 2 ? '👍' : '') }</div>
                         </div>
                         <div class="user__name">${ data.users[2].name }</div>
                         <div class="user__value-text">${ data.users[2].valueText }</div>
@@ -123,7 +130,7 @@ window.renderTemplate = function(alias, data) {
                                         class="user__photo"
                                         alt="avatar">
                             </picture>
-                            <div class="user__emoji">${ (data.selectedUserId && selectedUserIndex == 1 ? '👍' : '') }</div>
+                            <div class="user__emoji">${ (selectedUserIndex === 1 ? '👍' : '') }</div>
                         </div>
                         <div class="user__name">${ data.users[1].name }</div>
                         <div class="user__value-text">${ data.users[1].valueText }</div>
@@ -141,7 +148,7 @@ window.renderTemplate = function(alias, data) {
                                         class="user__photo"
                                         alt="avatar">
                             </picture>
-                            <div class="user__emoji">${ (data.selectedUserId && selectedUserIndex == 3 ? '👍' : '') }</div>
+                            <div class="user__emoji">${ (selectedUserIndex === 3 ? '👍' : '') }</div>
                         </div>
                         <div class="user__name">${ data.users[3].name }</div>
                         <div class="user__value-text">${ data.users[3].valueText }</div>
@@ -158,16 +165,19 @@ window.renderTemplate = function(alias, data) {
 
         // * Шаблон "голосование"
 
+        // Достаём offset
+        let currentOffset = data.offset || 0;
+
         // Рендеринг пользователя, который будет стоять на месте с номером index
         let renderUser = (index) => {
 
             // Сдвигаем индекс на offset, если он задан
-            index += data.offset || 0;
+            index += currentOffset;
 
             // Если на странице есть место, а пользователи закончились - выводим заглушку
             if (index >= data.users.length) {
                 return `
-                    <button class="user vote__user vote__user_hidden" data-action="update" data-params="{ alias: 'leaders', data: { selectedUserId: ${ data.users[data.offset].id } } }" disabled>
+                    <button class="user vote__user vote__user_hidden" data-action="update" data-params='{ \"alias\": \"leaders\", \"data\": { \"selectedUserId\": ${ data.users[data.offset].id } } }' disabled>
                         <div class="user__avatar">
                             <picture>
                                 <img	src="assets/images/1x/${ data.users[data.offset].avatar }"
@@ -184,7 +194,7 @@ window.renderTemplate = function(alias, data) {
 
             // Если всё нормально, то рендерим пользователя
             return `
-                <button class="user vote__user${ data.selectedUserId && data.selectedUserId === data.users[index].id ? ' vote__user_active' : '' }" data-action="update" data-params="{ alias: 'leaders', data: { selectedUserId: ${ data.users[index].id } } }"${ data.selectedUserId && data.selectedUserId === data.users[index].id ? ' disabled' : '' }>
+                <button class="user vote__user${ data.selectedUserId && data.selectedUserId === data.users[index].id ? ' vote__user_active' : '' }" data-action="update" data-params='{ \"alias\": \"leaders\", \"data\": { \"selectedUserId\": ${ data.users[index].id } } }'${ data.selectedUserId && data.selectedUserId === data.users[index].id ? ' disabled' : '' }>
                     <div class="user__avatar">
                         <picture>
                             <img	src="assets/images/1x/${ data.users[index].avatar }"
@@ -211,14 +221,14 @@ window.renderTemplate = function(alias, data) {
                         ${ renderUser(6) }
                     </div>
                     <div class="vote__column">
-                        <button class="vote__arrow" data-action="update" data-params="{ alias: 'vote', data: { offset: 0 } }" disabled>
+                        <button class="vote__arrow" data-action="update" data-params='{ \"alias\": \"vote\", \"data\": { \"offset\": ${ Math.max(currentOffset - 8, 0)} } }'${ currentOffset ? '' : ' disabled' }>
                             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(180)">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M32 62C48.5685 62 62 48.5685 62 32C62 15.4315 48.5685 2 32 2C15.4315 2 2 15.4315 2 32C2 48.5685 15.4315 62 32 62ZM32 64C49.6731 64 64 49.6731 64 32C64 14.3269 49.6731 0 32 0C14.3269 0 0 14.3269 0 32C0 49.6731 14.3269 64 32 64ZM59 32C59 46.9117 46.9117 59 32 59C17.0883 59 5 46.9117 5 32C5 17.0883 17.0883 5 32 5C46.9117 5 59 17.0883 59 32ZM25.0607 27.9393C24.4749 27.3536 23.5251 27.3536 22.9393 27.9393C22.3536 28.5251 22.3536 29.4749 22.9393 30.0607L30.9393 38.0607C31.5251 38.6464 32.4749 38.6464 33.0607 38.0607L41.0607 30.0607C41.6464 29.4749 41.6464 28.5251 41.0607 27.9393C40.4749 27.3536 39.5251 27.3536 38.9393 27.9393L32 34.8787L25.0607 27.9393Z" fill="#FCFBF7"/>
                             </svg>
                         </button>
                         ${ renderUser(1) }
                         ${ renderUser(4) }
-                        <button class="vote__arrow" data-action="update" data-params="{ alias: 'vote', data: { offset: 0 } }">
+                        <button class="vote__arrow" data-action="update" data-params='{ \"alias\": \"vote\", \"data\": { \"offset\": ${ currentOffset + 8 } } }'${ currentOffset + 8 < data.users.length ? '' : ' disabled' }>
                             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M32 62C48.5685 62 62 48.5685 62 32C62 15.4315 48.5685 2 32 2C15.4315 2 2 15.4315 2 32C2 48.5685 15.4315 62 32 62ZM32 64C49.6731 64 64 49.6731 64 32C64 14.3269 49.6731 0 32 0C14.3269 0 0 14.3269 0 32C0 49.6731 14.3269 64 32 64ZM59 32C59 46.9117 46.9117 59 32 59C17.0883 59 5 46.9117 5 32C5 17.0883 17.0883 5 32 5C46.9117 5 59 17.0883 59 32ZM25.0607 27.9393C24.4749 27.3536 23.5251 27.3536 22.9393 27.9393C22.3536 28.5251 22.3536 29.4749 22.9393 30.0607L30.9393 38.0607C31.5251 38.6464 32.4749 38.6464 33.0607 38.0607L41.0607 30.0607C41.6464 29.4749 41.6464 28.5251 41.0607 27.9393C40.4749 27.3536 39.5251 27.3536 38.9393 27.9393L32 34.8787L25.0607 27.9393Z" fill="#FCFBF7"/>
                             </svg>
@@ -239,12 +249,12 @@ window.renderTemplate = function(alias, data) {
                         ${ renderUser(4) }
                     </div>
                     <div class="vote__column">
-                        <button class="vote__arrow" data-action="update" data-params="{ alias: 'vote', data: { offset: 0 } }" disabled>
+                        <button class="vote__arrow" data-action="update" data-params='{ \"alias\": \"vote\", \"data\": { \"offset\": ${ Math.max(currentOffset - 6, 0)} } }'${ currentOffset ? '' : ' disabled' }>
                             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(180)">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M32 62C48.5685 62 62 48.5685 62 32C62 15.4315 48.5685 2 32 2C15.4315 2 2 15.4315 2 32C2 48.5685 15.4315 62 32 62ZM32 64C49.6731 64 64 49.6731 64 32C64 14.3269 49.6731 0 32 0C14.3269 0 0 14.3269 0 32C0 49.6731 14.3269 64 32 64ZM59 32C59 46.9117 46.9117 59 32 59C17.0883 59 5 46.9117 5 32C5 17.0883 17.0883 5 32 5C46.9117 5 59 17.0883 59 32ZM25.0607 27.9393C24.4749 27.3536 23.5251 27.3536 22.9393 27.9393C22.3536 28.5251 22.3536 29.4749 22.9393 30.0607L30.9393 38.0607C31.5251 38.6464 32.4749 38.6464 33.0607 38.0607L41.0607 30.0607C41.6464 29.4749 41.6464 28.5251 41.0607 27.9393C40.4749 27.3536 39.5251 27.3536 38.9393 27.9393L32 34.8787L25.0607 27.9393Z" fill="#FCFBF7"/>
                             </svg>
                         </button>
-                        <button class="vote__arrow" data-action="update" data-params="{ alias: 'vote', data: { offset: 0 } }">
+                        <button class="vote__arrow" data-action="update" data-params='{ \"alias\": \"vote\", \"data\": { \"offset\": ${ currentOffset + 6 } } }'${ currentOffset + 6 < data.users.length ? '' : ' disabled' }>
                             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M32 62C48.5685 62 62 48.5685 62 32C62 15.4315 48.5685 2 32 2C15.4315 2 2 15.4315 2 32C2 48.5685 15.4315 62 32 62ZM32 64C49.6731 64 64 49.6731 64 32C64 14.3269 49.6731 0 32 0C14.3269 0 0 14.3269 0 32C0 49.6731 14.3269 64 32 64ZM59 32C59 46.9117 46.9117 59 32 59C17.0883 59 5 46.9117 5 32C5 17.0883 17.0883 5 32 5C46.9117 5 59 17.0883 59 32ZM25.0607 27.9393C24.4749 27.3536 23.5251 27.3536 22.9393 27.9393C22.3536 28.5251 22.3536 29.4749 22.9393 30.0607L30.9393 38.0607C31.5251 38.6464 32.4749 38.6464 33.0607 38.0607L41.0607 30.0607C41.6464 29.4749 41.6464 28.5251 41.0607 27.9393C40.4749 27.3536 39.5251 27.3536 38.9393 27.9393L32 34.8787L25.0607 27.9393Z" fill="#FCFBF7"/>
                             </svg>
@@ -284,13 +294,19 @@ window.renderTemplate = function(alias, data) {
             maxValue = Math.max(maxValue, data.values[i].value);
         }
 
+        // Считаем индекс, с которого начинаются нулевые стобцы (спринты)
+        let futureSprintsIndex = indexR + 1;
+        for (let i = indexR; i >= indexL && data.values[i].value === 0; i--) {
+            futureSprintsIndex = i;
+        }
+
         // Рендерим столбики с нужной высотой
         let readyItemsHtml = ``;
         for (let i = indexL; i <= indexR; i++) {
             readyItemsHtml += `
                 <div class="graph__item${ data.values[i].active ? ' graph__item_active' : '' }">
                     <div class="graph__column">
-                        <div class="graph__value">${ i <= activeIndex ? data.values[i].value : '' }</div>
+                        <div class="graph__value">${ i <= futureSprintsIndex ? data.values[i].value : '' }</div>
                         <div class="graph__bar" style="height: calc(70% * ${ data.values[i].value } / ${ maxValue });"></div>
                     </div>
                     <div class="graph__label">${ data.values[i].title }</div>
