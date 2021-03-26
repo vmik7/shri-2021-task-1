@@ -457,6 +457,11 @@ body {
         color: var(--title-color);
 
         margin-top: 6px;
+
+        display: -webkit-box;
+        -webkit-box-orient: vertical;  
+        -webkit-line-clamp: 2;
+        overflow: hidden;
     }
 
     &__value-text {

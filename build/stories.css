@@ -798,6 +798,10 @@ body {
   line-height: 18px;
   color: var(--title-color);
   margin-top: 6px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
 }
 
 .user__value-text {
