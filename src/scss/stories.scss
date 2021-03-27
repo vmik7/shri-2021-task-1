@@ -249,33 +249,49 @@ body {
 
 .slide {
     height: 100vh;
-    padding: 20px 24px 0 24px;
     background: var(--slide-background);
     position: relative;
     display: flex;
     flex-direction: column;
 
+    @media screen and (orientation: portrait) {
+        padding: calc(20 * 100vw / 376) calc(24 * 100vw / 376) 0;
+    }
+    @media screen and (orientation: landscape) {
+        padding: calc(20 * 100vw / 668) calc(24 * 100vw / 668) 0;
+    }
+
     &__title {
         font-weight: bold;
-        font-size: 30px;
-        line-height: 32px;
         color: var(--title-color);
 
+        @media screen and (orientation: portrait) {
+            font-size: calc(30 * 100vw / 376);
+            line-height: calc(32 * 100vw / 376);
+        }
         @media screen and (orientation: landscape) {
+            font-size: calc(30 * 100vw / 668);
+            line-height: calc(32 * 100vw / 668);
+
             text-align: center;
         }
     }
 
     &__subtitle {
         font-weight: 500;
-        font-size: 16px;
-        line-height: 18px;
         color: var(--subtitle-color);
 
-        margin-top: 8px;
-
+        @media screen and (orientation: portrait) {
+            font-size: calc(16 * 100vw / 376);
+            line-height: calc(18 * 100vw / 376);
+            margin-top: calc(8 * 100vw / 376);
+        }
         @media screen and (orientation: landscape) {
             text-align: center;
+
+            font-size: calc(16 * 100vw / 668);
+            line-height: calc(18 * 100vw / 668);
+            margin-top: calc(8 * 100vw / 668);
         }
     }
 }
@@ -899,11 +915,22 @@ body {
         flex-direction: column;
 
         @media screen and (orientation: portrait) {
-            padding-bottom: 24px;
+            // padding-bottom: 24px;
+            // @media screen and (max-width: 376px) {
+                padding-bottom: calc(24 * 100vw / 376);
+            // }
         }
         @media screen and (orientation: landscape) {
             justify-content: center;
+            // padding-left: 97px;
+            // padding-right: 97px;
+
+            // @media screen and (max-width: 668px) {
+                padding-left: calc(97 * 100vw / 668);
+                padding-right: calc(97 * 100vw / 668);
+            // }
         }
+        
     }
 
     &__figure {
@@ -921,32 +948,59 @@ body {
         justify-content: center;
 
         @media screen and (orientation: landscape) {
-            margin-top: 29px;
+            // margin-top: 32px;
+
+            // @media screen and (max-width: 668px) {
+                margin-top: calc(32 * 100vw / 668);
+            // }
         }
     }
 
     &__legend-item {
-        width: 60px;
-
-        &:not(:last-child) {
-            margin-right: 8px;
+        @media screen and (orientation: portrait) {
+            width: calc(60 * 100vw / 376);
+            &:not(:last-child) {
+                margin-right: calc(8 * 100vw / 376);
+            }     
+        }
+        @media screen and (orientation: landscape) {
+            width: calc(60 * 100vw / 668);
+            &:not(:last-child) {
+                margin-right: calc(8 * 100vw / 668);
+            }
         }
     }
 
     &__legend-segment {
-        width: 52px;
-        height: 4px;
         background: var(--map-legend-seg-background);
         box-shadow: var(--map-legend-seg-shadow);
-
         position: absolute;
-        top: 4px;
-        left: 4px;
+
+        @media screen and (orientation: portrait) {
+            width: calc(52 * 100vw / 376);
+            height: calc(4 * 100vw / 376);
+            top: calc(4 * 100vw / 376);
+            left: calc(4 * 100vw / 376);
+        }
+        @media screen and (orientation: landscape) {
+            width: calc(52 * 100vw / 668);
+            height: calc(4 * 100vw / 668);
+            top: calc(4 * 100vw / 668);
+            left: calc(4 * 100vw / 668);
+        }
     }
 
     &__legend-tile {
-        height: 12px;
+        @media screen and (orientation: portrait) {
+            height: calc(12 * 100vw / 376);    
+        }
+
+        @media screen and (orientation: landscape) {
+            height: calc(12 * 100vw / 668);
+        } 
     }
+
+    
 
     &__legend-item:nth-child(1) &__legend-tile {
         position: relative;
@@ -954,14 +1008,22 @@ body {
         &::before, &::after {
             content: '';
             display: block;
-            height: 12px;
-            width: 4px;
-            border-radius: 2px;
             background: var(--map-legend-side-background);
             box-shadow: var(--map-legend-side-shadow);
-
             position: absolute;
             top: 0;
+
+            @media screen and (orientation: portrait) {
+                height: calc(12 * 100vw / 376);
+                width: calc(4 * 100vw / 376);
+                border-radius: calc(2 * 100vw / 376);  
+            }
+    
+            @media screen and (orientation: landscape) {
+                height: calc(12 * 100vw / 668);
+                width: calc(4 * 100vw / 668);
+                border-radius: calc(2 * 100vw / 668);  
+            }
         }
         &::before {
             left: 0;
@@ -970,36 +1032,45 @@ body {
             right: 0;
         }
     }
+    &__legend-item:not(:first-child) &__legend-tile {
+        @media screen and (orientation: portrait) {
+            border-radius: calc(2 * 100vw / 376);
+        }
+        @media screen and (orientation: landscape) {
+            border-radius: calc(2 * 100vw / 668);
+        }
+    }
     &__legend-item:nth-child(2) &__legend-tile {
-        border-radius: 2px;
         background: var(--map-legend-min-background);
         box-shadow: var(--map-legend-min-shadow);
     }
     &__legend-item:nth-child(3) &__legend-tile {
-        border-radius: 2px;
         background: var(--map-legend-mid-background);
         box-shadow: var(--map-legend-mid-shadow);
     }
     &__legend-item:nth-child(4) &__legend-tile {
-        border-radius: 2px;
         background: var(--map-legend-max-background);
         box-shadow: var(--map-legend-max-shadow);
     }
     &__legend-item:nth-child(5) &__legend-tile {
-        border-radius: 2px;
         background: var(--map-legend-extra-background);
         box-shadow: var(--map-legend-extra-shadow);
     }
 
     &__legend-label {
         font-weight: 500;
-        font-size: 16px;
-        line-height: 18px;
         color: var(--subtitle-color);
-        margin-top: 8px;
 
+        @media screen and (orientation: portrait) {
+            font-size: calc(16 * 100vw / 376);
+            line-height: calc(18 * 100vw / 376);
+            margin-top: calc(8 * 100vw / 376);
+        }
         @media screen and (orientation: landscape) {
             text-align: center;
+            font-size: calc(16 * 100vw / 668);
+            line-height: calc(18 * 100vw / 668);
+            margin-top: calc(8 * 100vw / 668);
         }
 
         &_portrait {
@@ -1019,56 +1090,70 @@ body {
 // Map block
 
 .map {
-    margin-top: 34px;
-    @media screen and (orientation: landscape) {
-        margin-top: 23px;
-    }
+    width: 100%;
 
     &__orientation {
-
         &_portrait {
             @media screen and (orientation: landscape) {
                 display: none;
             }
+            max-width: calc(328 * 100vh / 668);
         }
-
         &_landscape {
             @media screen and (orientation: portrait) {
                 display: none;
             }
+            max-width: calc(426 * 100vh / 376);
         }
     }
     &__row {
+        width: 100%;
         display: flex;
-        margin-top: -17.3px;
-        height: 34px;
+
+        height: 0;
+        
+        @media screen and (orientation: portrait) {
+            padding-top: calc(100% / 15 * 2);
+            &:not(:first-child) {
+                margin-top: calc(100% / 15 * -1.235);
+            }
+        }
         @media screen and (orientation: landscape) {
-            height: 26px;
-            margin-top: -13px;
+            padding-top: calc(100% / 25 * 2);
+            &:not(:first-child) {
+                margin-top: calc(100% / 25 * -1.235);
+            }
         }
 
         &:nth-child(2n + 1) {
-            margin-right: 22px;
+            @media screen and (orientation: portrait) {
+                margin-right: calc(100% / 15);
+            }
             @media screen and (orientation: landscape) {
-                margin-right: 17px;
+                margin-right: calc(100% / 25);
             }
         }
         &:nth-child(2n + 2) {
-            margin-left: 22px;
+            @media screen and (orientation: portrait) {
+                margin-left: calc(100% / 15);
+            }
             @media screen and (orientation: landscape) {
-                margin-left: 17px;
+                margin-left: calc(100% / 25);
             }
         }
     }
 
     &__col {
-        width: 44px;
-        height: 100vh;
+
+        // За счет padding стоблец растягивается по высоте и background не обрезается
+        // Саму высоту тогда можно сделать 0 и сместить обратно всё с помощью отрицательного margin
+        height: 0;
+        padding-top: 100%;
+        margin-top: -100%;
+
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center bottom;
-
-        transform: translate(0px, calc(-100vh + 31px));
 
         &_min {
             background-image: var(--map-column-min-url);
@@ -1083,8 +1168,11 @@ body {
             background-image: var(--map-column-extra-url);
         }
 
+        @media screen and (orientation: portrait) {
+            width: calc(100% / 15 * 2);
+        }
         @media screen and (orientation: landscape) {
-            width: 34px;
+            width: calc(100% / 25 * 2);
         }
     }
 }
