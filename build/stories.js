@@ -215,7 +215,7 @@ window.renderTemplate = function(alias, data) {
 
             // Если всё нормально, то рендерим пользователя
             return `
-                <button class="user vote__user${ data.selectedUserId && data.selectedUserId === data.users[index].id ? ' vote__user_active' : '' }" data-action="update" data-params='{ \"alias\": \"leaders\", \"data\": { \"selectedUserId\": ${ data.users[index].id } } }'${ data.selectedUserId && data.selectedUserId === data.users[index].id ? ' disabled' : '' }>
+                <button class="user vote__user${ data.selectedUserId && data.selectedUserId === data.users[index].id ? ' vote__user_active' : '' }" data-action="update" data-params='{ \"alias\": \"leaders\", \"data\": { \"selectedUserId\": ${ data.users[index].id } } }'>
                     <div class="user__avatar">
                         <picture>
                             <source srcset="assets/images/3x/${ data.users[index].avatar },

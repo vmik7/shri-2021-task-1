@@ -644,7 +644,7 @@ body {
         background: none;
         border: none;
 
-        &:hover:enabled:not(.vote__user_active), &:focus:enabled:not(.vote__user_active) {
+        &:hover:enabled, &:focus:enabled {
             background: var(--user-hover-background);
             box-shadow: var(--user-hover-shadow);
         }

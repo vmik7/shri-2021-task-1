@@ -877,8 +877,8 @@ body {
   border: none;
 }
 
-.vote__user:hover:enabled:not(.vote__user_active),
-.vote__user:focus:enabled:not(.vote__user_active) {
+.vote__user:hover:enabled,
+.vote__user:focus:enabled {
   background: var(--user-hover-background);
   -webkit-box-shadow: var(--user-hover-shadow);
           box-shadow: var(--user-hover-shadow);
