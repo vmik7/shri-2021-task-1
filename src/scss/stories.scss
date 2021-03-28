@@ -1,3 +1,6 @@
+// File with mixins definitions
+
+@import 'mixins';
 
 // Roboto Regular
 
@@ -254,25 +257,17 @@ body {
     display: flex;
     flex-direction: column;
 
-    @media screen and (orientation: portrait) {
-        padding: calc(20 * 100vw / 376) calc(24 * 100vw / 376) 0;
-    }
-    @media screen and (orientation: landscape) {
-        padding: calc(20 * 100vw / 668) calc(24 * 100vw / 668) 0;
-    }
+    @include resp-padding-top(20);
+    @include resp-padding-right(24);
+    @include resp-padding-left(24);
 
     &__title {
         font-weight: bold;
         color: var(--title-color);
 
-        @media screen and (orientation: portrait) {
-            font-size: calc(30 * 100vw / 376);
-            line-height: calc(32 * 100vw / 376);
-        }
-        @media screen and (orientation: landscape) {
-            font-size: calc(30 * 100vw / 668);
-            line-height: calc(32 * 100vw / 668);
+        @include resp-font-size(30, 32);
 
+        @media screen and (orientation: landscape) {
             text-align: center;
         }
     }
@@ -281,17 +276,11 @@ body {
         font-weight: 500;
         color: var(--subtitle-color);
 
-        @media screen and (orientation: portrait) {
-            font-size: calc(16 * 100vw / 376);
-            line-height: calc(18 * 100vw / 376);
-            margin-top: calc(8 * 100vw / 376);
-        }
+        @include resp-font-size(16, 18);
+        @include resp-margin-top(8);
+
         @media screen and (orientation: landscape) {
             text-align: center;
-
-            font-size: calc(16 * 100vw / 668);
-            line-height: calc(18 * 100vw / 668);
-            margin-top: calc(8 * 100vw / 668);
         }
     }
 }
@@ -305,7 +294,7 @@ body {
         flex: 1;
         display: flex;
         @media screen and (orientation: landscape) {
-            padding: 0 42px;
+            padding: 0 adaptL(42);
         }
     }
 
@@ -316,7 +305,10 @@ body {
         flex-direction: column;
         justify-content: flex-end;
 
-        flex: 1 0 calc((100% + 2 * 16px) / 3 - 16px);
+        
+        @media screen and (orientation: portrait) {
+            flex: 1 0 calc((100% + 2 * 16px) / 3 - 16px);
+        }
         @media screen and (orientation: landscape) {
             flex: 1 0 calc((100% + 4 * 16px) / 5 - 16px);
         }
@@ -339,14 +331,21 @@ body {
         width: auto;
         height: 100%;
         max-height: 10%;
-        padding-top: 18px;
-        padding-bottom: 16px;
+
+        @include resp-padding-top(18);
+        @include resp-padding-bottom(16);
 
         display: flex;
         flex-direction: column;
 
-        border-top-left-radius: 6px;
-        border-top-right-radius: 6px;
+        @media screen and (orientation: portrait) {
+            border-top-left-radius: adaptP(6);
+            border-top-right-radius: adaptP(6);
+        }
+        @media screen and (orientation: landscape) {
+            border-top-left-radius: adaptL(6);
+            border-top-right-radius: adaptL(6);
+        }
 
         background: var(--bar-background);
         box-shadow: var(--bar-shadow);
@@ -397,8 +396,8 @@ body {
 
     &__place-number {
         font-weight: 700;
-        font-size: 30px;
-        line-height: 32px;
+
+        @include resp-font-size(30, 32);
 
         color: var(--title-color);
 
@@ -421,14 +420,18 @@ body {
             &::after {
                 content: '';
                 display: block;
-                width: 100%;
-                max-width: 60px;
-                height: 1px;
+                // width: 100%;
+                // max-width: 60px;
+                // height: 1px;
                 background: var(--user-vs-place-sep-color);
                 position: absolute;
-                bottom: 6px;
+                // bottom: 6px;
                 left: 50%;
                 transform: translate3d(-50%, 0, 0);
+
+                @include resp-width(60);
+                @include resp-height(1);
+                @include resp-bottom(6);
             }
 
             @media screen and (orientation: landscape) {
@@ -443,16 +446,34 @@ body {
 
 .user {
     font-family: 'Roboto', serif;
-    border-radius: 6px;
-    max-width: 104px;
     text-align: center;
-    padding: 20px 4px 16px 4px;
+
+    @include resp-border-radius(6);
+    @include resp-width(104);
+
+    @include resp-padding-top(20);
+    @include resp-padding-left(4);
+    @include resp-padding-bottom(16);
+    @include resp-padding-right(4);
 
     &__avatar {
         position: relative;
         width: 64px;
         height: 64px;
         margin: 0 auto;
+
+        @media screen and (orientation: portrait) and (min-width: 752px), screen and (orientation: landscape) and (min-width: 1336px) {
+            width: 128px;
+            height: 128px;
+        }
+        @media screen and (orientation: portrait) and (max-width: 376px) {
+            width: adaptP(64);
+            height: adaptP(64);
+        }
+        @media screen and (orientation: landscape) and (max-width: 668px) {
+            width: adaptL(64);
+            height: adaptL(64);
+        }
 
         img {
             max-width: 100%;
@@ -468,21 +489,38 @@ body {
         position: absolute;
         bottom: 100%;
         left: 50%;
-        transform: translate(-50%, 10px);
+
+        @media screen and (orientation: portrait) {
+            transform: translate(-50%, adaptP(10));
+        }
+        @media screen and (orientation: landscape) {
+            transform: translate(-50%, adaptL(10));
+        }
 
         font-weight: 700;
         font-size: 32px;
         line-height: 32px;
+
+        @media screen and (orientation: portrait) and (min-width: 752px), screen and (orientation: landscape) and (min-width: 1336px) {
+            font-size: 64px;
+            line-height: 64px;
+        }
+        @media screen and (orientation: portrait) and (max-width: 376px) {
+            font-size: adaptP(32);
+            line-height: adaptP(32);
+        }
+        @media screen and (orientation: landscape) and (max-width: 668px) {
+            font-size: adaptL(32);
+            line-height: adaptL(32);
+        }
     }
 
     &__name {
         font-weight: 500;
-        font-size: 16px;
-        line-height: 18px;
-
         color: var(--title-color);
 
-        margin-top: 6px;
+        @include resp-font-size(16, 18);
+        @include resp-margin-top(6);
 
         display: -webkit-box;
         -webkit-box-orient: vertical;  
@@ -491,18 +529,16 @@ body {
     }
 
     &__value-text {
-        font-size: 14px;
-        line-height: 16px;
-
         color: var(--subtitle-color);
 
-        margin-top: 4px;
+        @include resp-font-size(14, 16);
+        @include resp-margin-top(4);
     }
 
     &_view {
         &_inline {
-            max-width: 100%;
-            padding: 0;
+            width: 100% !important;
+            padding: 0 !important;
 
             display: flex;
             align-items: center;
@@ -512,6 +548,7 @@ body {
     &_view_inline &__avatar {
         width: 40px;
         height: 40px;
+        flex-shrink: 0;
     }
 
     &_view_inline &__name {
@@ -519,7 +556,8 @@ body {
     }
 
     &__info {
-        margin-left: 14px;
+        // margin-left: 14px;
+        @include resp-margin-left(14);
         text-align: left;
         flex: 1;
     }
@@ -550,7 +588,8 @@ body {
                     display: none;
                 }
                 justify-content: space-evenly;
-                margin: 0 -24px;
+                @include resp-margin-left(-24);
+                @include resp-margin-right(-24);
             }
         }
 
@@ -560,6 +599,7 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
+        align-items: center;
         height: 100%;
     }
 
@@ -568,6 +608,14 @@ body {
         border: none;
         padding: 0;
         margin: 0;
+
+        @include resp-width(64);
+        @include resp-height(64);
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
 
         svg path {
             fill: var(--button-fill);
@@ -609,9 +657,11 @@ body {
         display: flex;
         flex-direction: column;
 
-        padding-top: 12px;
+        @media screen and (orientation: portrait) {
+            padding-top: adaptP(12);
+        }
         @media screen and (orientation: landscape) {
-            padding-top: 13px;
+            padding-top: adaptL(13);
         }
     }
 
@@ -619,8 +669,8 @@ body {
         flex: 1;
 
         @media screen and (orientation: portrait) {
-            margin-left: -24px;
-            margin-right: -12px;
+            margin-left: adaptP(-24);
+            margin-right: adaptP(-12);
             overflow: hidden;
             position: relative;
         }
@@ -629,7 +679,8 @@ body {
     &__users {
         display: flex;
         flex-direction: column;
-        padding: 24px 0;
+        @include resp-padding-top(24);
+        @include resp-padding-bottom(24);
 
         @media screen and (orientation: landscape) {
             flex-direction: row;
@@ -639,19 +690,21 @@ body {
 
     &__user {
         @media screen and (orientation: landscape) {
-            flex: 0 1 220px;
+            flex: 0 1 adaptL(220);
         }
     }
 
     &__users-sep {
-        height: 2px;
         background: var(--grey-light);
         opacity: 0.3;
-        margin: 16px 0;
+        @media screen and (orientation: portrait) {
+            height: adaptP(2);
+            margin: adaptP(16) 0;
+        }
         @media screen and (orientation: landscape) {
             height: 100%;
-            width: 2px;
-            margin: 0 16px;
+            width: adaptL(2);
+            margin: 0 adaptL(16);
         }
     }
 }
@@ -678,15 +731,15 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
-        min-width: 64px;
+        @include resp-width(64);
     }
 
     &__value {
         font-weight: 700;
-        font-size: 20px;
-        line-height: 22px;
         color: var(--subtitle-color);
-        margin-bottom: 8px;
+
+        @include resp-font-size(20, 22);
+        @include resp-margin-bottom(8);
     }
     &__item_active &__value {
         color: var(--title-color);
@@ -702,12 +755,12 @@ body {
     }
 
     &__bar {
-        min-height: 8px;
-        width: 100%;
-        max-width: 40px;
-        border-radius: 6px;
         background: var(--graph-background);
         box-shadow: var(--graph-shadow);
+
+        @include resp-border-radius(6);
+        @include resp-min-height(8);
+        @include resp-width(40);
     }
     &__item_active &__bar {
         background: var(--graph-accent-background);
@@ -716,10 +769,10 @@ body {
 
     &__label {
         font-weight: 500;
-        font-size: 16px;
-        line-height: 18px;
         color: var(--subtitle-color);
-        margin-top: 12px;
+
+        @include resp-font-size(16, 18);
+        @include resp-margin-top(12);
     }
 }
 
@@ -733,15 +786,17 @@ body {
         
         @media screen and (orientation: portrait) {
             flex-direction: column;
-            padding-bottom: 8px;
-            padding-top: 14px;
+
+            @include resp-padding-bottom(8);
+            @include resp-padding-top(14);
         }
 
         @media screen and (orientation: landscape) {
             align-items: center;
             justify-content: center;
-            padding-left: 18px;
-            padding-right: 18px;
+
+            @include resp-padding-left(18);
+            @include resp-padding-right(18);
         }
     }
 
@@ -754,16 +809,19 @@ body {
 
         @media screen and (orientation: portrait) {
             flex: 1;
+            width: adaptP(328);
+            margin: 0 auto;
         }
         @media screen and (orientation: landscape) {
-            flex: 0 1 240px;
+            flex: 0 0 adaptL(240);
+            height: adaptL(240);
         }
     }
 
     &__legend {
         @media screen and (orientation: landscape) {
             flex: 1;
-            margin-left: 40px;
+            margin-left: adaptL(40);
         }
     }
 
@@ -771,30 +829,34 @@ body {
         width: 100%;
         display: flex;
         align-items: center;
-        padding: 16px 0;
+
+        @include resp-padding-top(16);
+        @include resp-padding-bottom(16);
 
         position: relative;
 
         &:not(:last-child) {
-            margin-bottom: 2px;
+            @include resp-margin-bottom(2);
+
             &::after {
                 content: '';
                 display: block;
-                height: 2px;
+                @include resp-height(2);
                 background: var(--subtitle-color);
                 opacity: 0.3;
 
                 position: absolute;
                 left: 0;
                 right: 0;
-                bottom: -2px;
+                @include resp-bottom(-2);
             }
         }
     }
 
     &__legend-dot {
-        width: 16px;
-        height: 16px;
+        @include resp-width(16);
+        @include resp-height(16);
+
         border-radius: 50%;
 
         &_l1 {
@@ -820,26 +882,26 @@ body {
 
     &__legend-title {
         font-weight: 500;
-        font-size: 16px;
-        line-height: 18px;
         color: var(--title-color);
-        margin-left: 10px;
         margin-right: auto;
+
+        @include resp-font-size(16, 18);
+        @include resp-margin-left(10);
     }
 
     &__legend-diff {
         font-weight: 500;
-        font-size: 16px;
-        line-height: 18px;
         color: var(--subtitle-color);
-        margin-right: 16px;
+
+        @include resp-font-size(16, 18);
+        @include resp-margin-right(16);
     }
 
     &__legend-value {
         font-weight: 500;
-        font-size: 16px;
-        line-height: 18px;
         color: var(--subtitle-color);
+
+        @include resp-font-size(16, 18);
     }
 
     &__center-block {
@@ -856,29 +918,33 @@ body {
 
     &__text-total {
         font-weight: 700;
-        font-size: 30px;
-        line-height: 32px;
         text-align: center;
         color: var(--title-color);
 
+        @media screen and (orientation: portrait) {
+            font-size: adaptP(30);
+            line-height: adaptP(32);
+        }
         @media screen and (orientation: landscape) {
-            font-size: 20px;
-            line-height: 22px;
+            font-size: adaptL(20);
+            line-height: adaptL(22);
         }
     }
 
     &__text-diff {
         font-weight: 700;
-        font-size: 20px;
-        line-height: 22px;
         text-align: center;
         color: var(--subtitle-color);
-        margin-top: 8px;
 
+        @media screen and (orientation: portrait) {
+            font-size: adaptP(20);
+            line-height: adaptP(22);
+            margin-top: adaptP(8);
+        }
         @media screen and (orientation: landscape) {
-            font-size: 16px;
-            line-height: 18px;
-            margin-top: 6px;
+            font-size: adaptL(16);
+            line-height: adaptL(18);
+            margin-top: adaptL(6);
         }
     }
 }
@@ -915,20 +981,12 @@ body {
         flex-direction: column;
 
         @media screen and (orientation: portrait) {
-            // padding-bottom: 24px;
-            // @media screen and (max-width: 376px) {
-                padding-bottom: calc(24 * 100vw / 376);
-            // }
+            padding-bottom: adaptP(24);
         }
         @media screen and (orientation: landscape) {
             justify-content: center;
-            // padding-left: 97px;
-            // padding-right: 97px;
-
-            // @media screen and (max-width: 668px) {
-                padding-left: calc(97 * 100vw / 668);
-                padding-right: calc(97 * 100vw / 668);
-            // }
+            padding-left: adaptP(97);
+            padding-right: adaptP(97);
         }
         
     }
@@ -948,26 +1006,14 @@ body {
         justify-content: center;
 
         @media screen and (orientation: landscape) {
-            // margin-top: 32px;
-
-            // @media screen and (max-width: 668px) {
-                margin-top: calc(32 * 100vw / 668);
-            // }
+            margin-top: adaptL(32);
         }
     }
 
     &__legend-item {
-        @media screen and (orientation: portrait) {
-            width: calc(60 * 100vw / 376);
-            &:not(:last-child) {
-                margin-right: calc(8 * 100vw / 376);
-            }     
-        }
-        @media screen and (orientation: landscape) {
-            width: calc(60 * 100vw / 668);
-            &:not(:last-child) {
-                margin-right: calc(8 * 100vw / 668);
-            }
+        @include resp-width(60);
+        &:not(:last-child) {
+            @include resp-margin-right(8);
         }
     }
 
@@ -976,28 +1022,14 @@ body {
         box-shadow: var(--map-legend-seg-shadow);
         position: absolute;
 
-        @media screen and (orientation: portrait) {
-            width: calc(52 * 100vw / 376);
-            height: calc(4 * 100vw / 376);
-            top: calc(4 * 100vw / 376);
-            left: calc(4 * 100vw / 376);
-        }
-        @media screen and (orientation: landscape) {
-            width: calc(52 * 100vw / 668);
-            height: calc(4 * 100vw / 668);
-            top: calc(4 * 100vw / 668);
-            left: calc(4 * 100vw / 668);
-        }
+        @include resp-width(52);
+        @include resp-height(4);
+        @include resp-top(4);
+        @include resp-left(4);
     }
 
     &__legend-tile {
-        @media screen and (orientation: portrait) {
-            height: calc(12 * 100vw / 376);    
-        }
-
-        @media screen and (orientation: landscape) {
-            height: calc(12 * 100vw / 668);
-        } 
+        @include resp-height(12);
     }
 
     
@@ -1013,17 +1045,9 @@ body {
             position: absolute;
             top: 0;
 
-            @media screen and (orientation: portrait) {
-                height: calc(12 * 100vw / 376);
-                width: calc(4 * 100vw / 376);
-                border-radius: calc(2 * 100vw / 376);  
-            }
-    
-            @media screen and (orientation: landscape) {
-                height: calc(12 * 100vw / 668);
-                width: calc(4 * 100vw / 668);
-                border-radius: calc(2 * 100vw / 668);  
-            }
+            @include resp-height(12);
+            @include resp-width(4);
+            @include resp-border-radius(2);
         }
         &::before {
             left: 0;
@@ -1033,12 +1057,8 @@ body {
         }
     }
     &__legend-item:not(:first-child) &__legend-tile {
-        @media screen and (orientation: portrait) {
-            border-radius: calc(2 * 100vw / 376);
-        }
-        @media screen and (orientation: landscape) {
-            border-radius: calc(2 * 100vw / 668);
-        }
+        @include resp-border-radius(2);
+
     }
     &__legend-item:nth-child(2) &__legend-tile {
         background: var(--map-legend-min-background);
@@ -1061,17 +1081,12 @@ body {
         font-weight: 500;
         color: var(--subtitle-color);
 
-        @media screen and (orientation: portrait) {
-            font-size: calc(16 * 100vw / 376);
-            line-height: calc(18 * 100vw / 376);
-            margin-top: calc(8 * 100vw / 376);
-        }
         @media screen and (orientation: landscape) {
             text-align: center;
-            font-size: calc(16 * 100vw / 668);
-            line-height: calc(18 * 100vw / 668);
-            margin-top: calc(8 * 100vw / 668);
         }
+
+        @include resp-font-size(16, 18);
+        @include resp-margin-top(8);
 
         &_portrait {
             @media screen and (orientation: landscape) {
@@ -1090,20 +1105,22 @@ body {
 // Map block
 
 .map {
-    width: 100%;
+    max-width: 100%;
 
     &__orientation {
         &_portrait {
             @media screen and (orientation: landscape) {
                 display: none;
             }
-            max-width: calc(328 * 100vh / 668);
+            // max-width: calc(328 * 100vh / 668);
+            @include resp-width(328);
         }
         &_landscape {
             @media screen and (orientation: portrait) {
                 display: none;
             }
-            max-width: calc(426 * 100vh / 376);
+            // max-width: calc(426 * 100vh / 376);
+            @include resp-width(426);
         }
     }
     &__row {

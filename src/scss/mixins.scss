@@ -1,0 +1,187 @@
+@function adapt($v, $w, $h) {
+    @return unquote('calc(min(' + $v + ' * 100vw / ' + $w + ', ' + $v + ' * 100vh / ' + $h + '))');
+}
+@function adaptP($v) {
+    @return adapt($v, 376, 668);
+}
+@function adaptL($v) {
+    @return adapt($v, 668, 376);
+}
+@mixin resp-font-size($fz, $lh) {
+    @media screen and (orientation: portrait) {
+        font-size: adaptP($fz);
+        line-height: adaptP($lh);
+    }
+    @media screen and (orientation: landscape) {
+        font-size: adaptL($fz);
+        line-height: adaptL($lh);
+    }
+}
+@mixin resp-width($v) {
+    @media screen and (orientation: portrait) {
+        width: adaptP($v);
+    }
+    @media screen and (orientation: landscape) {
+        width: adaptL($v);
+    }
+}
+@mixin resp-min-width($v) {
+    @media screen and (orientation: portrait) {
+        min-width: adaptP($v);
+    }
+    @media screen and (orientation: landscape) {
+        min-width: adaptL($v);
+    }
+}
+@mixin resp-max-width($v) {
+    @media screen and (orientation: portrait) {
+        max-width: adaptP($v);
+    }
+    @media screen and (orientation: landscape) {
+        max-width: adaptL($v);
+    }
+}
+@mixin resp-height($v) {
+    @media screen and (orientation: portrait) {
+        height: adaptP($v);
+    }
+    @media screen and (orientation: landscape) {
+        height: adaptL($v);
+    }
+}
+@mixin resp-min-height($v) {
+    @media screen and (orientation: portrait) {
+        min-height: adaptP($v);
+    }
+    @media screen and (orientation: landscape) {
+        min-height: adaptL($v);
+    }
+}
+@mixin resp-max-height($v) {
+    @media screen and (orientation: portrait) {
+        max-height: adaptP($v);
+    }
+    @media screen and (orientation: landscape) {
+        max-height: adaptL($v);
+    }
+}
+@mixin resp-border-radius($v) {
+    @media screen and (orientation: portrait) {
+        border-radius: adaptP($v);
+    }
+    @media screen and (orientation: landscape) {
+        border-radius: adaptL($v);
+    }
+}
+@mixin resp-padding($v) {
+    @media screen and (orientation: portrait) {
+        padding: adaptP($v);
+    }
+    @media screen and (orientation: landscape) {
+        padding: adaptL($v);
+    }
+}
+@mixin resp-padding-top($v) {
+    @media screen and (orientation: portrait) {
+        padding-top: adaptP($v);
+    }
+    @media screen and (orientation: landscape) {
+        padding-top: adaptL($v);
+    }
+}
+@mixin resp-padding-left($v) {
+    @media screen and (orientation: portrait) {
+        padding-left: adaptP($v);
+    }
+    @media screen and (orientation: landscape) {
+        padding-left: adaptL($v);
+    }
+}
+@mixin resp-padding-bottom($v) {
+    @media screen and (orientation: portrait) {
+        padding-bottom: adaptP($v);
+    }
+    @media screen and (orientation: landscape) {
+        padding-bottom: adaptL($v);
+    }
+}
+@mixin resp-padding-right($v) {
+    @media screen and (orientation: portrait) {
+        padding-right: adaptP($v);
+    }
+    @media screen and (orientation: landscape) {
+        padding-right: adaptL($v);
+    }
+}
+@mixin resp-margin($v) {
+    @media screen and (orientation: portrait) {
+        margin: adaptP($v);
+    }
+    @media screen and (orientation: landscape) {
+        margin: adaptL($v);
+    }
+}
+@mixin resp-margin-top($v) {
+    @media screen and (orientation: portrait) {
+        margin-top: adaptP($v);
+    }
+    @media screen and (orientation: landscape) {
+        margin-top: adaptL($v);
+    }
+}
+@mixin resp-margin-left($v) {
+    @media screen and (orientation: portrait) {
+        margin-left: adaptP($v);
+    }
+    @media screen and (orientation: landscape) {
+        margin-left: adaptL($v);
+    }
+}
+@mixin resp-margin-bottom($v) {
+    @media screen and (orientation: portrait) {
+        margin-bottom: adaptP($v);
+    }
+    @media screen and (orientation: landscape) {
+        margin-bottom: adaptL($v);
+    }
+}
+@mixin resp-margin-right($v) {
+    @media screen and (orientation: portrait) {
+        margin-right: adaptP($v);
+    }
+    @media screen and (orientation: landscape) {
+        margin-right: adaptL($v);
+    }
+}
+@mixin resp-top($v) {
+    @media screen and (orientation: portrait) {
+        top: adaptP($v);
+    }
+    @media screen and (orientation: landscape) {
+        top: adaptL($v);
+    }
+}
+@mixin resp-right($v) {
+    @media screen and (orientation: portrait) {
+        right: adaptP($v);
+    }
+    @media screen and (orientation: landscape) {
+        right: adaptL($v);
+    }
+}
+@mixin resp-bottom($v) {
+    @media screen and (orientation: portrait) {
+        bottom: adaptP($v);
+    }
+    @media screen and (orientation: landscape) {
+        bottom: adaptL($v);
+    }
+}
+@mixin resp-left($v) {
+    @media screen and (orientation: portrait) {
+        left: adaptP($v);
+    }
+    @media screen and (orientation: landscape) {
+        left: adaptL($v);
+    }
+}

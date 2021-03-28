@@ -46,6 +46,9 @@ window.renderTemplate = function(alias, data) {
                 <div class="user leaders__user leaders__user_bottom">
                     <div class="user__avatar">
                         <picture>
+                            <source srcset="assets/images/3x/${ data.users[selectedUserIndex].avatar },
+                                            assets/images/4x/${ data.users[selectedUserIndex].avatar } 2x"
+                                    media="(orientation: portrait) and (min-width: 752px), (orientation: landscape) and (min-width: 668px)">
                             <img	src="assets/images/1x/${ data.users[selectedUserIndex].avatar }"
                                     srcset="assets/images/2x/${ data.users[selectedUserIndex].avatar } 2x"
                                     class="user__photo"
@@ -70,6 +73,9 @@ window.renderTemplate = function(alias, data) {
                     <div class="user leaders__user">
                         <div class="user__avatar">
                             <picture>
+                                <source srcset="assets/images/3x/${ data.users[4].avatar },
+                                        assets/images/4x/${ data.users[4].avatar } 2x"
+                                        media="(orientation: portrait) and (min-width: 752px), (orientation: landscape) and (min-width: 668px)">
                                 <img	src="assets/images/1x/${ data.users[4].avatar }"
                                         srcset="assets/images/2x/${ data.users[4].avatar } 2x"
                                         class="user__photo"
@@ -88,6 +94,9 @@ window.renderTemplate = function(alias, data) {
                     <div class="user leaders__user">
                         <div class="user__avatar">
                             <picture>
+                                <source srcset="assets/images/3x/${ data.users[2].avatar },
+                                        assets/images/4x/${ data.users[2].avatar } 2x"
+                                        media="(orientation: portrait) and (min-width: 752px), (orientation: landscape) and (min-width: 668px)">
                                 <img	src="assets/images/1x/${ data.users[2].avatar }"
                                         srcset="assets/images/2x/${ data.users[2].avatar } 2x"
                                         class="user__photo"
@@ -106,6 +115,9 @@ window.renderTemplate = function(alias, data) {
                     <div class="user leaders__user">
                         <div class="user__avatar">
                             <picture>
+                                <source srcset="assets/images/3x/${ data.users[0].avatar },
+                                        assets/images/4x/${ data.users[0].avatar } 2x"
+                                        media="(orientation: portrait) and (min-width: 752px), (orientation: landscape) and (min-width: 668px)">
                                 <img	src="assets/images/1x/${ data.users[0].avatar }"
                                         srcset="assets/images/2x/${ data.users[0].avatar } 2x"
                                         class="user__photo"
@@ -125,6 +137,9 @@ window.renderTemplate = function(alias, data) {
                     <div class="user leaders__user">
                         <div class="user__avatar">
                             <picture>
+                                <source srcset="assets/images/3x/${ data.users[1].avatar },
+                                        assets/images/4x/${ data.users[1].avatar } 2x"
+                                        media="(orientation: portrait) and (min-width: 752px), (orientation: landscape) and (min-width: 668px)">
                                 <img	src="assets/images/1x/${ data.users[1].avatar }"
                                         srcset="assets/images/2x/${ data.users[1].avatar } 2x"
                                         class="user__photo"
@@ -143,6 +158,9 @@ window.renderTemplate = function(alias, data) {
                     <div class="user leaders__user">
                         <div class="user__avatar">
                             <picture>
+                                <source srcset="assets/images/3x/${ data.users[3].avatar },
+                                        assets/images/4x/${ data.users[3].avatar } 2x"
+                                        media="(orientation: portrait) and (min-width: 752px), (orientation: landscape) and (min-width: 668px)">
                                 <img	src="assets/images/1x/${ data.users[3].avatar }"
                                         srcset="assets/images/2x/${ data.users[3].avatar } 2x"
                                         class="user__photo"
@@ -180,6 +198,9 @@ window.renderTemplate = function(alias, data) {
                     <button class="user vote__user vote__user_hidden" data-action="update" data-params='{ \"alias\": \"leaders\", \"data\": { \"selectedUserId\": ${ data.users[data.offset].id } } }' disabled>
                         <div class="user__avatar">
                             <picture>
+                                <source srcset="assets/images/3x/${ data.users[data.offset].avatar },
+                                        assets/images/4x/${ data.users[data.offset].avatar } 2x"
+                                        media="(orientation: portrait) and (min-width: 752px), (orientation: landscape) and (min-width: 668px)">
                                 <img	src="assets/images/1x/${ data.users[data.offset].avatar }"
                                         srcset="assets/images/2x/${ data.users[data.offset].avatar } 2x"
                                         class="user__photo"
@@ -197,6 +218,9 @@ window.renderTemplate = function(alias, data) {
                 <button class="user vote__user${ data.selectedUserId && data.selectedUserId === data.users[index].id ? ' vote__user_active' : '' }" data-action="update" data-params='{ \"alias\": \"leaders\", \"data\": { \"selectedUserId\": ${ data.users[index].id } } }'${ data.selectedUserId && data.selectedUserId === data.users[index].id ? ' disabled' : '' }>
                     <div class="user__avatar">
                         <picture>
+                            <source srcset="assets/images/3x/${ data.users[index].avatar },
+                                    assets/images/4x/${ data.users[index].avatar } 2x"
+                                    media="(orientation: portrait) and (min-width: 752px), (orientation: landscape) and (min-width: 668px)">
                             <img	src="assets/images/1x/${ data.users[index].avatar }"
                                     srcset="assets/images/2x/${ data.users[index].avatar } 2x" 
                                     class="user__photo"
@@ -306,7 +330,7 @@ window.renderTemplate = function(alias, data) {
             readyItemsHtml += `
                 <div class="graph__item${ data.values[i].active ? ' graph__item_active' : '' }">
                     <div class="graph__column">
-                        <div class="graph__value">${ i <= futureSprintsIndex ? data.values[i].value : '' }</div>
+                        <div class="graph__value">${ i < futureSprintsIndex ? data.values[i].value : '' }</div>
                         <div class="graph__bar" style="height: calc(70% * ${ data.values[i].value } / ${ maxValue });"></div>
                     </div>
                     <div class="graph__label">${ data.values[i].title }</div>
@@ -329,6 +353,9 @@ window.renderTemplate = function(alias, data) {
                         <div class="user user_view_inline chart__user">
                             <div class="user__avatar">
                                 <picture>
+                                    <source srcset="assets/images/3x/${ data.users[0].avatar },
+                                            assets/images/4x/${ data.users[0].avatar } 2x"
+                                            media="(orientation: portrait) and (min-width: 752px), (orientation: landscape) and (min-width: 668px)">
                                     <img	src="assets/images/1x/${ data.users[0].avatar }"
                                             srcset="assets/images/2x/${ data.users[0].avatar } 2x"
                                             class="user__photo"
@@ -344,6 +371,9 @@ window.renderTemplate = function(alias, data) {
                         <div class="user user_view_inline chart__user">
                             <div class="user__avatar">
                                 <picture>
+                                    <source srcset="assets/images/3x/${ data.users[1].avatar },
+                                            assets/images/4x/${ data.users[1].avatar } 2x"
+                                            media="(orientation: portrait) and (min-width: 752px), (orientation: landscape) and (min-width: 668px)">
                                     <img	src="assets/images/1x/${ data.users[1].avatar }"
                                             srcset="assets/images/2x/${ data.users[1].avatar } 2x"
                                             class="user__photo"
