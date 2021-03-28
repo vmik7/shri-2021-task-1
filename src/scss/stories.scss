@@ -466,11 +466,11 @@ body {
             width: 128px;
             height: 128px;
         }
-        @media screen and (orientation: portrait) and (max-width: 376px) {
+        @media screen and (orientation: portrait) and (max-width: 752px) {
             width: adaptP(64);
             height: adaptP(64);
         }
-        @media screen and (orientation: landscape) and (max-width: 668px) {
+        @media screen and (orientation: landscape) and (max-width: 1336px) {
             width: adaptL(64);
             height: adaptL(64);
         }
@@ -505,11 +505,11 @@ body {
             font-size: 64px;
             line-height: 64px;
         }
-        @media screen and (orientation: portrait) and (max-width: 376px) {
+        @media screen and (orientation: portrait) and (max-width: 752px) {
             font-size: adaptP(32);
             line-height: adaptP(32);
         }
-        @media screen and (orientation: landscape) and (max-width: 668px) {
+        @media screen and (orientation: landscape) and (max-width: 1336px) {
             font-size: adaptL(32);
             line-height: adaptL(32);
         }
@@ -549,6 +549,19 @@ body {
         width: 40px;
         height: 40px;
         flex-shrink: 0;
+
+        @media screen and (orientation: portrait) and (min-width: 752px), screen and (orientation: landscape) and (min-width: 1336px) {
+            width: 80px;
+            height: 80px;
+        }
+        @media screen and (orientation: portrait) and(max-width: 752px) {
+            width: adaptP(40);
+            height: adaptP(40);
+        }
+        @media screen and (orientation: landscape) and (max-width: 1336px) {
+            width: adaptL(40);
+            height: adaptL(40);
+        }
     }
 
     &_view_inline &__name {

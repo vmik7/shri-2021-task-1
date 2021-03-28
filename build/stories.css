@@ -1268,9 +1268,14 @@ body {
     font-size: 64px;
     line-height: 64px;
   }
+
+  .user_view_inline .user__avatar {
+    width: 80px;
+    height: 80px;
+  }
 }
 
-@media screen and (orientation: landscape) and (max-width: 668px) {
+@media screen and (orientation: landscape) and (max-width: 1336px) {
   .user__avatar {
     width: calc(min(64 * 100vw / 668, 64 * 100vh / 376));
     height: calc(min(64 * 100vw / 668, 64 * 100vh / 376));
@@ -1280,9 +1285,14 @@ body {
     font-size: calc(min(32 * 100vw / 668, 32 * 100vh / 376));
     line-height: calc(min(32 * 100vw / 668, 32 * 100vh / 376));
   }
+
+  .user_view_inline .user__avatar {
+    width: calc(min(40 * 100vw / 668, 40 * 100vh / 376));
+    height: calc(min(40 * 100vw / 668, 40 * 100vh / 376));
+  }
 }
 
-@media screen and (orientation: portrait) and (max-width: 376px) {
+@media screen and (orientation: portrait) and (max-width: 752px) {
   .user__avatar {
     width: calc(min(64 * 100vw / 376, 64 * 100vh / 668));
     height: calc(min(64 * 100vw / 376, 64 * 100vh / 668));
@@ -1291,6 +1301,11 @@ body {
   .user__emoji {
     font-size: calc(min(32 * 100vw / 376, 32 * 100vh / 668));
     line-height: calc(min(32 * 100vw / 376, 32 * 100vh / 668));
+  }
+
+  .user_view_inline .user__avatar {
+    width: calc(min(40 * 100vw / 376, 40 * 100vh / 668));
+    height: calc(min(40 * 100vw / 376, 40 * 100vh / 668));
   }
 }
 
